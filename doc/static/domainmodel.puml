@@ -25,33 +25,34 @@ object Bank
 object Business
 object Plot
 
-Game *-- Board
-Game *--  Player
+Game *-- "1" Board
+Game *-- "2..6" Player
 
-Game *-- Dice
-Board *-- Field : has-a
+Game *-- "2" Dice
+Board *-- "40" Field : has-a
 
-Plot *-- Building: has-a
-Property  *--  Deed
-Player *--  Deed
-Business <|--  ShippingLine
-Business <|--  Brewery : is - a
+Plot *-- "0..4" Building: has-a
+Property  *-- "1" Deed
+Player *-- "0..28" Deed
+Business <|--  "4" ShippingLine
+Business <|--  "2" Brewery : is - a
 
-Field <|-- Property : is - a
-Field <|-- Start
-Field <|-- Chance
-Field <|-- Parking
-Field <|-- Tax
-Field <|-- Prison
-Field <|-- Visit
+Field <|-- "28" Property : is - a
+Field <|-- "1" Start
+Field <|-- "6" Chance
+Field <|-- "1" Parking
+Field <|-- "2" Tax
+Field <|-- "1" Prison
+Field <|-- "1" Visit
 
 
 CardDeck --* Chance
-Property <|-- Business
-Property <|-- Plot: is - a
+Property <|-- "6" Business
+Property <|-- "22" Plot: is - a
 
-Player *--  Card
-CardDeck  *--  Card
+Player *-- "0..2" Card
+CardDeck "1" *-- "40" Card
 
+'forskellige typer bygninger?
 
 @enduml
