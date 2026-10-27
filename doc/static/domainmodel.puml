@@ -25,33 +25,34 @@ object Bank
 object Business
 object Plot
 
-Game *-- Board
-Game *--  Player
+Game "1"*-- "2"Board
+Game "1"*--  "2..6"Player
+Game "1"*-- "1"Bank
+Game "1"*-- "2"Dice
 
-Game *-- Dice
-Board *-- Field : has-a
+Board "1"*-- "40"Field : has-a
 
-Plot *-- Building: has-a
-Property  *--  Deed
-Player *--  Deed
-Business <|--  ShippingLine
-Business <|--  Brewery : is - a
+Plot "1"*-- "0..3"Building: has-a
+Property  "28"*--  "28"Deed
+Player "1"*--  "0..28"Deed
+Business "6"<|--  "4"ShippingLine
+Business "6"<|--  "2"Brewery : is - a
 
-Field <|-- Property : is - a
-Field <|-- Start
-Field <|-- Chance
-Field <|-- Parking
-Field <|-- Tax
-Field <|-- Prison
-Field <|-- Visit
+Field "40"<|-- "28"Property : is - a
+Field "40"<|-- "1"Start
+Field "40"<|-- "6"Chance
+Field "40"<|-- "1"Parking
+Field "40"<|-- "2"Tax
+Field "40"<|-- "1"Prison
+Field "40"<|-- "1"Visit
 
 
-CardDeck --* Chance
-Property <|-- Business
-Property <|-- Plot: is - a
+CardDeck "1"--* "6"Chance
+Property "28"<|-- "6"Business
+Property "28"<|-- "22"Plot: is - a
 
-Player *--  Card
-CardDeck  *--  Card
+Player "1"*--  "*"Card
+CardDeck  "1"*--  "16"Card
 
 
 @enduml
