@@ -91,4 +91,21 @@ public class TextUI {
         int input = this.promptNumeric("tast et tal");
         return input;
     }
+
+    public void displayMessage(String msg) {
+        System.out.println(msg);
+    }
+
+    public boolean promptBinary(String msg) {
+        System.out.println(msg);
+        String input = scan.nextLine();
+
+        if (input.equalsIgnoreCase("Y")) {
+            return true;
+        } else if (input.equalsIgnoreCase("N")) {
+            return false;
+        } else {
+            return promptBinary(msg);
+        }
+    }
 }
