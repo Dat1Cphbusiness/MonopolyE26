@@ -17,10 +17,11 @@ public class Game {
 
     }
     public void startSession(){
+
+        ui.displayMessage("Velkommen til Matador!");
+
         ArrayList<String> data = io.readData("data/playerData.csv");
-        if(data.isEmpty()){
-            registerPlayers();
-        }else {
+        if (!data.isEmpty() && ui.promptBinary("Continue previously saved game? Y/N")) {
             for (String s : data) {
                 //instantier en player
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
@@ -28,8 +29,9 @@ public class Game {
                 int balance = Integer.parseInt(values[1].trim());
                 Player p = new Player(name, balance);
                 players.add(p);
-
             }
+        } else {
+            registerPlayers();
         }
 
     }
