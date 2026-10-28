@@ -29,9 +29,11 @@ public class Game {
                 Player p = new Player(name, balance);
                 players.add(p);
             }
-            return;
+
+        }else {
+            registerPlayers();
         }
-        registerPlayers();
+
     }
 
 
