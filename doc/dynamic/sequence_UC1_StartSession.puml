@@ -1,0 +1,16 @@
+
+@startuml
+Main -> Game : displayPlayers()
+
+'indsæt kald til displayMessage i TextUI X
+'indsæt kald til readPlayerData i FIleIO X
+'indsæt betingelse (alt) X
+'indsæt loop X
+'indsæt kald til createPlayer X
+'indsæt kald til registerPlayer X
+'indsæt kald til displayPlayers X
+
+
+@enduml
+
+

@@ -3,16 +3,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TextUI {
+
     /*
-
-
-
-
-' shows the options, promts for choices until limit is reached, and returns the user's choices as a list of Strings
-+ ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
-
-
+    ' shows the options, promts for choices until limit is reached, and returns the user's choices as a list of Strings
+    + ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
     */
+
     Scanner scan = new Scanner(System.in);
 
     public String promptText(String msg) {
