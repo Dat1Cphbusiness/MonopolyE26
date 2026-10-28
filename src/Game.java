@@ -10,17 +10,17 @@ public class Game {
     FileIO io = new FileIO();
 
 
-    public Game(String name, int maxPlayers){
+    public Game(String name, int maxPlayers) {
         this.name = name;
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
 
     }
-    public void startSession(){
+
+    public void startSession() {
+        ui.displayMessage("Welcome to Matador");
         ArrayList<String> data = io.readData("data/playerData.csv");
-        if(data.isEmpty()){
-            registerPlayers();
-        }else {
+        if (!data.isEmpty() && ui.promptBinary("Continue previously saved game? Y/N")) {
             for (String s : data) {
 
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
@@ -28,14 +28,18 @@ public class Game {
                 int balance = Integer.parseInt(values[1].trim());
                 Player p = new Player(name, balance);
                 players.add(p);
-
             }
+
+        }else {
+            registerPlayers();
         }
 
     }
-    public void registerPlayers(){
 
-        while(this.players.size() < this.maxPlayers) {
+
+    public void registerPlayers() {
+
+        while (this.players.size() < this.maxPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
             this.createPlayer(playerName, 0);
@@ -43,21 +47,22 @@ public class Game {
     }
 
 
-    private void createPlayer(String name, int score){
+    private void createPlayer(String name, int score) {
         Player p = new Player(name, score);
         players.add(p);
     }
 
-    public void displayPlayers(){
-        for(Player p:players){
+    public void displayPlayers() {
+        for (Player p : players) {
             System.out.println(p);
         }
     }
-    public void endSession(){
-        ArrayList<String> playersData = new ArrayList<>();
-       // persister data
 
-        for(Player p:players){
+    public void endSession() {
+        ArrayList<String> playersData = new ArrayList<>();
+        // persister data
+
+        for (Player p : players) {
             playersData.add(p.toString());
 
         }
