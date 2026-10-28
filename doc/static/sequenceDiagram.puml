@@ -6,12 +6,13 @@ Game -> TextUI : ui.promptBinary()
 
 alt !data.isEmpty() && ui.promptBinary()
     loop String s : data
-        Game -> Game : new Player()
+        Game -> Player : new Player()
+        Game -> ArrayList : players.add()
     end
     else
 loop this.players.size() < this.maxPlayers
     Game -> Game : registerPlayers()
-    Game -> Game : createPlayer()
+    Game -> Player : createPlayer()
     end
 end
 
