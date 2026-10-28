@@ -21,6 +21,18 @@ public class TextUI {
         return input;
     }
 
+    //Method takes input of y/n and returns input as ture or false based on user input
+    public boolean promptBinary(String msg) {
+        System.out.println(msg);
+        String input = scan.nextLine();
+        if (input.equalsIgnoreCase("y")) {
+            return true;
+        } if (input.equalsIgnoreCase("n")) {
+            return false;
+        }
+        return promptBinary(msg);
+    }
+
     public int promptNumeric(String msg){
         System.out.println(msg);
         int input = 0;
@@ -64,6 +76,10 @@ public class TextUI {
 
 
 
+    }
+
+    public void displayMsg(String msg) {
+        System.out.println(msg);
     }
 
     public ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg){
