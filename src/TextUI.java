@@ -91,4 +91,10 @@ public class TextUI {
         int input = this.promptNumeric("tast et tal");
         return input;
     }
+
+    public void displayMessage(String String velkommenTilMatador) {
+        System.out.println("Velkommen til Matador");
+
+
+    }
 }

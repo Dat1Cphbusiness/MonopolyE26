@@ -16,7 +16,12 @@ public class Game {
         players = new ArrayList<>();
 
     }
+
+    public Game() {
+    }
+
     public void startSession(){
+        ui.displayMessage("velkommen til Matador");
         ArrayList<String> data = io.readData("data/playerData.csv");
         if(data.isEmpty()){
             registerPlayers();
