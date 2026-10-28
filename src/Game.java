@@ -22,7 +22,7 @@ public class Game {
             registerPlayers();
         }else {
             for (String s : data) {
-                //instantier en player
+
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
                 String name = values[0];
                 int balance = Integer.parseInt(values[1].trim());

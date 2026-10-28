@@ -1,0 +1,37 @@
+@startuml
+!pragma layout smetana
+
+'nyt: carddeck - card
+
+
+
+
+object Field
+object Property
+
+
+object ShippingLine
+object Brewery
+object Building
+
+
+object Business
+object Plot
+
+
+Plot *-- "0..3" Building: has-a
+
+
+Business <|-- "4" ShippingLine
+Business <|--  "2" Brewery
+Field <|--  "29" Property : is - a
+
+
+
+Property <|-- Business
+Property <|-- "23" Plot
+
+
+
+
+@enduml
