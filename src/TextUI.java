@@ -21,6 +21,14 @@ public class TextUI {
         return input;
     }
 
+    public void displayMsg(String text){
+        System.out.println(text);
+    }
+
+
+
+
+
     public int promptNumeric(String msg){
         System.out.println(msg);
         int input = 0;

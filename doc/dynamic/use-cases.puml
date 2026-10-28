@@ -10,6 +10,16 @@
   usecase "LandAndAct" as UC4
   usecase "EndGame" as UC5
 
+  UC1 --> UC2
+  UC2 --> UC3
+  UC3 --> UC4
+  UC4 --> UC5
+  UC5 --> UC2
+  UC3 --> UC5
+  UC4 --> UC3
+
+
+
 
 
 @enduml

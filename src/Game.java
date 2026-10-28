@@ -17,10 +17,14 @@ public class Game {
 
     }
     public void startSession(){
+
+        ui.displayMsg("Velkommen til Matador");
+        //create board - nej
+        // diplay list - ja
+        // No players, register -- ja
+        // rainy day - nej
         ArrayList<String> data = io.readData("data/playerData.csv");
-        if(data.isEmpty()){
-            registerPlayers();
-        }else {
+        if(!data.isEmpty() && ui.promptBinary("Would you like to continue with saved data?")){
             for (String s : data) {
                 //instantier en player
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
@@ -28,9 +32,40 @@ public class Game {
                 int balance = Integer.parseInt(values[1].trim());
                 Player p = new Player(name, balance);
                 players.add(p);
-
             }
         }
+        else {
+            registerPlayers();
+        }
+
+
+        /*
+        else{
+            ArrayList<String> choices = new ArrayList<>();
+            choices.add("Yes");
+            choices.add("No");
+
+            int choice = ui.promptMenuChoice(choices, "Do you want to continue with this data?");
+
+            if(choice == 1){
+                for (String s : data) {
+                    //instantier en player
+                    String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
+                    String name = values[0];
+                    int balance = Integer.parseInt(values[1].trim());
+                    Player p = new Player(name, balance);
+                    players.add(p);
+                }
+            }
+            else{
+                registerPlayers();
+            }
+
+
+
+        }
+
+         */
 
     }
     public void registerPlayers(){
