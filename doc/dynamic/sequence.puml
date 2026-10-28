@@ -1,0 +1,27 @@
+@startuml
+Main -> Game : startSession()
+
+Game -> TextUI : displayMessage()
+Game -> FileIO : readData()
+FileIO -> ArrayList : ArrayList <String> new()
+Game <-- FileIO : ArrayList<String> data
+
+alt (!data.isEmpty && ui.promptBinary(msg))
+    loop for String s : data
+    Game -> Player : Player new(name)
+    Game -> ArrayList : players.add(Player)
+    end
+else
+    Game -> Game : registerPlayers()
+    loop while players.size < maxPlayers
+    Game -> TextUI : promptText()
+
+    Game -> Game : createPlayer()
+    Game -> ArrayList : players.add()
+    end
+    end
+
+Game -> Game : displayPlayers()
+
+
+@enduml
