@@ -1,0 +1,27 @@
+@startuml
+Main -> Game : StartSession()
+Game -> TextUI : displayMessage()
+Game -> FileIO : readData()
+Game -> TextUI : ui.promptBinary()
+
+alt !data.isEmpty() && ui.promptBinary()
+    loop String s : data
+        Game -> Game : new Player()
+    end
+    else
+loop this.players.size() < this.maxPlayers
+    Game -> Game : registerPlayers()
+    Game -> Game : createPlayer()
+    end
+end
+
+Game -> Game : displayPlayers()
+
+'indsæt kald til displayMessage i TextUI X Done
+'indsæt kald til readPlayerData i FIleIO X Done
+'indsæt betingelse (alt) X Done
+'indsæt loop X Done
+'indsæt kald til createPlayer X done
+'indsæt kald til registerPlayer X Done
+'indsæt kald til displayPlayers X Done
+@enduml
