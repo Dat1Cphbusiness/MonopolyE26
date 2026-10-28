@@ -30,6 +30,7 @@ public class TextUI {
         if (input.equals("y")) {
             return true;
         }
+
         if (input.equals("n")) {
             return false;
         }
