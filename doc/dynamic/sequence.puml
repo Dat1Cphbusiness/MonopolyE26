@@ -7,6 +7,7 @@ FileIO -> ArrayList : ArrayList <String> new()
 Game <-- FileIO : ArrayList<String> data
 
 alt (!data.isEmpty && ui.promptBinary(msg))
+    Game -> TextUI : promptBinary()
     loop for String s : data
     Game -> Player : Player new(name)
     Game -> ArrayList : players.add(Player)
