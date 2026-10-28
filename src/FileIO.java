@@ -42,9 +42,5 @@ public class FileIO {
 
                System.out.println("filen blev ikke fundet");
            }
-
-
-
     }
-
 }

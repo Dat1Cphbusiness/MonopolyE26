@@ -1,0 +1,22 @@
+@startuml
+@startuml
+Main -> Game : startSession()
+Game -> TextUI : displayMessage()
+Game -> FileIO : readPlayerData()
+alt Y
+loop
+Game -> Game : createPlayer()
+Game -> Game : displayPlayers()
+end
+else N
+Game -> Game : registerPlayers()
+Game -> Game : displayPlayers()
+'indsæt betingelse (alt) X
+'indsæt loop X
+'indsæt kald til createPlayer X
+'indsæt kald til registerPlayer X
+'indsæt kald til displayPlayers X
+
+
+@enduml
+@enduml
