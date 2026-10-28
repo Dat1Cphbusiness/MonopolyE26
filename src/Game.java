@@ -17,7 +17,7 @@ public class Game {
     }
 
     public void startSession(){
-        ui.displayMsg("Velkommen til Matador");
+        ui.displayMessage("Velkommen til Matador");
         ArrayList<String> data = io.readData("data/playerData.csv");
         if(!data.isEmpty() && ui.promptBinary("Continue previously saved game? Y/N")){
             for (String s : data) {
