@@ -4,6 +4,23 @@ import java.util.Scanner;
 
 public class FileIO {
 
+    // Tilføj metoden String[] readData(String path, int length) -  path er stien til filen der skal loades og length er antallet af linjer i filen
+    public String[] readData(String path, int length) {
+
+        // start metoden med at initialisere et String[] data med det antal pladser som er angivet i parameterlisten (length)
+        String [] data = new String[length];
+
+
+        //todo:
+        // - Lav en instans af File til at loade den fil der er angivet i path.
+        // -  Lige efter instantiering af File, tilføj en tom try-catch blok som fanger FileNotFoundException
+       //  Brug Scanner klassen i kombination med et loop for at læse hver enkelt linje i filen.
+        // For hver iteration I loop’et skal linjen lægges ind i data.
+       //         Dette kræver at du initialiserer en counter udenfor loop’et, som tælles op med 1 inde i loopet)
+        // returner data som lige er blevet fyldt op
+
+        return data;
+    }
 
     public ArrayList<String> readData(String path){
         File file = new File(path);
@@ -15,11 +32,7 @@ public class FileIO {
 
                 String s = scan.nextLine();// "Egon , 20000"
                 data.add(s);
-                /*String[] values = s.split(",");// ["Egon", " 20000"]
-                String name = values[0] ;
-                String balance = values[1];
-                Player p = new Player (name, balance);
-                players.add(p);*/
+
             }
         }catch(FileNotFoundException e){
             System.out.println(e.getMessage());
