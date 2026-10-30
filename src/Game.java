@@ -51,6 +51,7 @@ public class Game {
             }
             continueGame = ui.promptBinary("Fortsæt? Y/N");
         }
+        endSession();
 
     }
 
