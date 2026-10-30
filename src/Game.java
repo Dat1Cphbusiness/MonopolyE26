@@ -43,7 +43,10 @@ public class Game {
 
         try {
              promptNumberOfPlayers = ui.promptNumeric("Indtast antal af spillere: ");
-        } catch (NumberFormatException e){
+            if (promptNumberOfPlayers < 2 || promptNumberOfPlayers > maxPlayers){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e){
             System.out.println("ugyldigt input, prøv igen");
             registerPlayers();
         }
