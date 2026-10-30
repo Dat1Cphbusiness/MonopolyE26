@@ -39,10 +39,13 @@ public class TextUI {
         try {
             input = scan.nextInt();
         } catch (InputMismatchException e) {
-            scan.nextLine();
-            System.out.println("Skriv et tal");
+           // scan.nextLine();
+           // System.out.println("Skriv et tal");
             input = promptNumeric(msg);
         }
+
+        scan.nextLine();//scannerbug flush
+
         return input;
     }
 

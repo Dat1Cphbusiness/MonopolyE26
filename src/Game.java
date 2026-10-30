@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -8,7 +10,7 @@ public class Game {
     private List<Player> players;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
-
+    private Player currentPlayer;
 
     public Game(String name, int maxPlayers) {
         this.name = name;
@@ -35,14 +37,35 @@ public class Game {
 
     }
 
+    public void runGameLoop(){
+
+        currentPlayer = players.get(0);
+        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+
+    }
 
     public void registerPlayers() {
 
-        while (this.players.size() < this.maxPlayers) {
+        //bed om antal spillere
+        int totalPlayers = ui.promptNumeric("Tast antal spillere");
+
+        //tjek om det er mellem min(2) og max(3)
+        if(!(totalPlayers >= 2 && totalPlayers <= maxPlayers)){
+            ui.displayMessage("UGYLDIGT ANTAL");
+            registerPlayers();
+            return;
+        }
+        //kald metoden rekursivt hvis ikke
+
+
+
+        while (this.players.size() < totalPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
             this.createPlayer(playerName, 0);
         }
+
+        Collections.shuffle(players);
     }
 
 
