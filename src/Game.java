@@ -38,9 +38,13 @@ public class Game {
     }
 
     public void runGameLoop(){
-        //hej
-        currentPlayer = players.get(0);
-        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        int count = 0;
+        boolean continueGame = true;
+
+        while (continueGame){
+            currentPlayer = players.get(count);
+            ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        }
 
     }
 
