@@ -38,9 +38,15 @@ public class Game {
     }
 
     public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
 
-        currentPlayer = players.get(0);
-        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        while (continueGame){
+            currentPlayer = players.get(count % players.size());
+            throwAndMove();
+            continueGame = ui.promptBinary("Fortsæt? Y/N");
+            count++;
+        }
 
     }
 
@@ -56,8 +62,6 @@ public class Game {
             return;
         }
         //kald metoden rekursivt hvis ikke
-
-
 
         while (this.players.size() < totalPlayers) {
 
@@ -88,6 +92,15 @@ public class Game {
             playersData.add(p.toString());
 
         }
+        System.out.println("Spillet er slut");
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+    }
+
+    public void throwAndMove(){
+        ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+    }
+
+    public void landAndAct(){
+
     }
 }
