@@ -45,7 +45,7 @@ public class Game {
             try {
                 currentPlayer = players.get(count);
                 count++;
-                ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+                throwAndMove();
             } catch (IndexOutOfBoundsException e){
                 count = 0;
             }
@@ -66,8 +66,6 @@ public class Game {
             return;
         }
         //kald metoden rekursivt hvis ikke
-
-
 
         while (this.players.size() < totalPlayers) {
 
@@ -100,5 +98,13 @@ public class Game {
         }
         System.out.println("Spillet er slut");
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+    }
+
+    public void throwAndMove(){
+        ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+    }
+
+    public void landAndAct(){
+
     }
 }
