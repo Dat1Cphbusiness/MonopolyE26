@@ -1,8 +1,14 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+
 
 public class Game {
 
+
+
+    private Player currentPlayer;
     private String name;
     private int maxPlayers;
     private List<Player> players;
@@ -18,11 +24,10 @@ public class Game {
     }
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
-        if(data.isEmpty()){
-            registerPlayers();
-        }else {
+        ui.displayMessage("Velkommen til Matador");
+        if(!data.isEmpty() && ui.promptBinary("Continue previously saved game? Y/N")){
             for (String s : data) {
-                //instantier en player
+
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
                 String name = values[0];
                 int balance = Integer.parseInt(values[1].trim());
@@ -30,22 +35,27 @@ public class Game {
                 players.add(p);
 
             }
+            return;
         }
+        registerPlayers();
 
     }
     public void registerPlayers(){
+        int playerNum = ui.promptNumeric("Tast antal deltagere:");
+        if  (playerNum >= 2 && maxPlayers >= playerNum) {
+            while (playerNum > players.size()) {
 
-        while(this.players.size() < this.maxPlayers) {
-
-            String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
-        }
+                name = ui.promptText("Tast spiller nr: " + (players.size() + 1) +  "/" + playerNum +" navn på spiller:" );
+                createPlayer(name, 0);
+            }
+        } else {System.out.println("Tast et tal mellem 2 og 6"); registerPlayers();}
     }
 
 
     private void createPlayer(String name, int score){
         Player p = new Player(name, score);
         players.add(p);
+
     }
 
     public void displayPlayers(){
@@ -55,7 +65,6 @@ public class Game {
     }
     public void endSession(){
         ArrayList<String> playersData = new ArrayList<>();
-       // persister data
 
         for(Player p:players){
             playersData.add(p.toString());
@@ -63,4 +72,14 @@ public class Game {
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
     }
+
+    public void runGameLoop(){
+        Collections.shuffle(players);
+        currentPlayer = players.get(0);
+        System.out.println("Det er " + currentPlayer.getPlayerName() + " tur!");
+    }
+
+
+
+
 }

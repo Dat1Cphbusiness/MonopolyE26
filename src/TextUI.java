@@ -13,6 +13,8 @@ public class TextUI {
 
 
     */
+
+
     Scanner scan = new Scanner(System.in);
 
     public String promptText(String msg){
@@ -26,6 +28,7 @@ public class TextUI {
         int input = 0;
         try {
             input = scan.nextInt();
+            scan.nextLine();
         }catch (InputMismatchException e){
             scan.nextLine();
             System.out.println("Skriv et tal");
@@ -91,4 +94,22 @@ public class TextUI {
         int input = this.promptNumeric("tast et tal");
         return input;
     }
+
+   public void displayMessage(String msg){
+       System.out.println(msg);
+   }
+
+   public boolean promptBinary(String msg) {
+       System.out.println(msg);
+       String input = scan.nextLine();
+       if (input.equalsIgnoreCase("Y")) {
+           return true;
+       } else if (input.equalsIgnoreCase("N")) {
+           return false;
+       } else return promptBinary(msg);
+
+
+   }
+
+
 }
