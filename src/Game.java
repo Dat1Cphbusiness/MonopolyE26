@@ -39,8 +39,26 @@ public class Game {
 
     public void runGameLoop(){
 
-        currentPlayer = players.get(0);
-        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        int count = 0;
+        boolean continueGame = true;
+
+        while(continueGame){
+            currentPlayer = players.get(count);
+            ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+
+            count++;
+
+            count = (count + 1) % players.size();
+
+            continueGame = ui.promptBinary("Fortsæt? (Y/N)");
+
+
+
+        }
+
+
+
+
 
     }
 
@@ -69,6 +87,8 @@ public class Game {
     }
 
 
+
+
     private void createPlayer(String name, int score) {
         Player p = new Player(name, score);
         players.add(p);
@@ -89,5 +109,8 @@ public class Game {
 
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+
+
+        ui.displayMessage("Spillet er nu slut");
     }
 }
