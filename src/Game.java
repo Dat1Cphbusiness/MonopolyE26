@@ -42,14 +42,10 @@ public class Game {
         boolean continueGame = true;
 
         while (continueGame){
-            try {
-                currentPlayer = players.get(count);
-                count++;
-                throwAndMove();
-            } catch (IndexOutOfBoundsException e){
-                count = 0;
-            }
+            currentPlayer = players.get(count % players.size());
+            throwAndMove();
             continueGame = ui.promptBinary("Fortsæt? Y/N");
+            count++;
         }
 
     }
