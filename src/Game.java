@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -8,6 +9,7 @@ public class Game {
     private List<Player> players;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
+    private Player currentPlayer;
 
 
     public Game(String name, int maxPlayers) {
@@ -37,12 +39,17 @@ public class Game {
 
 
     public void registerPlayers() {
+        int playerCount = ui.promptNumeric("Tast antal af spillere");
 
-        while (this.players.size() < this.maxPlayers) {
-
-            String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+        if (playerCount >= 2 && playerCount <= maxPlayers) {
+            while (this.players.size() < playerCount) {
+                String playerName = ui.promptText("Tast spiller navn");
+                this.createPlayer(playerName, 0);
+            }
+        } else {
+            registerPlayers();
         }
+        Collections.shuffle(players);
     }
 
 
@@ -66,5 +73,11 @@ public class Game {
 
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+    }
+
+    public void runGameLoop() {
+        currentPlayer = players.getFirst();
+
+        System.out.println("It is " + currentPlayer.getName() + "'s turn");
     }
 }
