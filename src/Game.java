@@ -52,16 +52,13 @@ public class Game {
 
     public void registerPlayers() {
 
-        //bed om antal spillere
         int totalPlayers = ui.promptNumeric("Tast antal spillere");
 
-        //tjek om det er mellem min(2) og max(3)
         if(!(totalPlayers >= 2 && totalPlayers <= maxPlayers)){
             ui.displayMessage("UGYLDIGT ANTAL");
             registerPlayers();
             return;
         }
-        //kald metoden rekursivt hvis ikke
 
         while (this.players.size() < totalPlayers) {
 
