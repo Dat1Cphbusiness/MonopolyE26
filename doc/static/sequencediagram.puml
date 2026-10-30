@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+@startuml
+Main -> Game : startSession()
+Game -> TextUI : displayMessage()
+Game -> FileIO : readData()
+alt Data found
+    Game -> Game : createPlayer()
+else Data not found
+    loop for antal spillere
+        Game -> TextUI : displayMessage()
+        Game -> Game : createPlayer()
+        Game -> Game : registerPlayer()
+    end
+end
+Main -> Game : displayPlayers()
+
+'indsæt kald til displayMessage i TextUI X
+'indsæt kald til readPlayerData i FIleIO X
+'indsæt betingelse (alt) X
+'indsæt loop X
+'indsæt kald til createPlayer X
+'indsæt kald til registerPlayer X
+'indsæt kald til displayPlayers X
+
+
+@enduml

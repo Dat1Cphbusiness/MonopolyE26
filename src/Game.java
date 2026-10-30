@@ -38,9 +38,22 @@ public class Game {
     }
 
     public void runGameLoop(){
+        int roundCount = 0;
+        boolean continueGame = true;
 
-        currentPlayer = players.get(0);
-        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        while (continueGame) {
+
+
+            currentPlayer = players.get(roundCount);
+            throwAndMove();
+            continueGame = ui.promptBinary("Fortsæt? Y/N");
+
+            if (roundCount == players.size() - 1) {
+                roundCount = 0;
+            } else {
+                roundCount++;
+            }
+        }
 
     }
 
@@ -89,5 +102,17 @@ public class Game {
 
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+
+        System.out.println("Spillet er slut");
     }
+
+    private void throwAndMove() {
+        ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+
+    }
+
+    private void landAndAct() {
+        System.out.println();
+    }
+
 }
