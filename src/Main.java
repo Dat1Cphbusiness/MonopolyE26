@@ -12,10 +12,11 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Game g = new Game("Matador",4);
+        Game g = new Game("Matador");
         g.startSession();
         //g.registerPlayers();
         g.displayPlayers();
+        g.runGameLoop();
         g.endSession();
 
 

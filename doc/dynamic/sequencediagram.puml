@@ -1,16 +1,43 @@
 @startuml
-@startuml
 Main -> Game : startSession()
+activate Game
+
 Game -> TextUI : displayMessage()
 Game -> FileIO : readPlayerData()
-alt Y
-loop
+activate FileIO
+return data
+Game -> TextUI : answer = ui.promptBinary()
+activate TextUI
+return  fx. "Y"
+alt if answer == true
+
+loop String s : data
 Game -> Game : createPlayer()
-Game -> Game : displayPlayers()
+Game -> Player : player = new(name, balance)
+Game -> ArrayList : players.add(player)
 end
-else N
+else if false
+
 Game -> Game : registerPlayers()
-Game -> Game : displayPlayers()
+
+loop this.players.size() < this.maxPlayers
+Game -> TextUI : playerName = ui.promptText()
+TextUI --> Game : playerName
+Game -> Game : createPlayer()
+activate Game
+
+Game -> Player : player = new(playerName, 0)
+Game -> ArrayList : players.add(player)
+end
+
+
+
+end
+Main -> Game : displayPlayers()
+Main -> Game : endSession()
+
+'indsæt kald til displayMessage i TextUI X
+'indsæt kald til readPlayerData i FIleIO X
 'indsæt betingelse (alt) X
 'indsæt loop X
 'indsæt kald til createPlayer X
@@ -18,5 +45,4 @@ Game -> Game : displayPlayers()
 'indsæt kald til displayPlayers X
 
 
-@enduml
 @enduml
