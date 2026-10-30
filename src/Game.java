@@ -51,10 +51,6 @@ public class Game {
             registerPlayers();
         }
 
-        if (promptNumberOfPlayers < 2 || promptNumberOfPlayers > maxPlayers){
-            registerPlayers();
-        }
-
         while (this.players.size() < promptNumberOfPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
