@@ -49,6 +49,7 @@ public class Game {
             } catch (IndexOutOfBoundsException e){
                 count = 0;
             }
+            continueGame = ui.promptBinary("Fortsæt? Y/N");
         }
 
     }
@@ -97,6 +98,7 @@ public class Game {
             playersData.add(p.toString());
 
         }
+        System.out.println("Spillet er slut");
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
     }
 }
