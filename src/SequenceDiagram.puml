@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Game
+participant FileIO
+participant Board
+participant Field
+participant CardDeck
+participant Card
+
+
+Game --> Game : buildBoard()
+activate Game
+Game --> FileIO : readData("fields.csv", 40)
+activate FileIO
+FileIO --> Game : fieldData
+deactivate FileIO
+Game --> FileIO: readData("cards.csv", 100)
+activate FileIO
+FileIO --> Game: cardData
+deactivate FileIO
+Game --> Board: new Board(fieldData, cardData)
+activate Board
+Board --> Board : createField(fieldData)
+loop (for each element in fieldData.length)
+Board --> Field: new Field(id, label, cost, income)
+Field --> Board: field
+
+
+
+@enduml
