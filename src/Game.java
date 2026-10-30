@@ -38,9 +38,17 @@ public class Game {
     }
 
     public void runGameLoop(){
-
-        currentPlayer = players.get(0);
-        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+        int count = 0;
+        boolean continueGame = true;
+        while (continueGame) {
+            if (count == players.size()){
+                count = 0;
+            }
+            currentPlayer = players.get(count);
+            count++;
+            ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+            continueGame = ui.promptBinary("Fortsæt? Y/N");
+        }
 
     }
 
@@ -89,5 +97,6 @@ public class Game {
 
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+        System.out.println("Spillet er afsluttet");
     }
 }
