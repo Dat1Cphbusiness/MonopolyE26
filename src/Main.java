@@ -18,6 +18,9 @@ public class Main {
         g.startSession();
         g.registerPlayers();
         g.displayPlayers();
+
+        g.runGameLoop();
+
         g.endSession();
 
 

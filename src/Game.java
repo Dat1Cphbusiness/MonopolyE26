@@ -7,7 +7,7 @@ public class Game {
     private String name;
     private int maxPlayers;
     private List<Player> players;
-    private String currentPlayer;
+    private Player currentPlayer;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
 
@@ -39,11 +39,19 @@ public class Game {
 
 
     public void registerPlayers() {
+        int promptNumberOfPlayers = 0;
 
-        int promptNumberOfPlayers = ui.promptNumeric("Indtast antal af spillere: ");
-        if (promptNumberOfPlayers < 2 || promptNumberOfPlayers > 6){
+        try {
+             promptNumberOfPlayers = ui.promptNumeric("Indtast antal af spillere: ");
+        } catch (NumberFormatException e){
+            System.out.println("ugyldigt input, prøv igen");
             registerPlayers();
         }
+
+        if (promptNumberOfPlayers < 2 || promptNumberOfPlayers > maxPlayers){
+            registerPlayers();
+        }
+
         while (this.players.size() < promptNumberOfPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
@@ -73,5 +81,12 @@ public class Game {
 
         }
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
+    }
+
+    public void runGameLoop(){
+        this.currentPlayer = players.get(0);
+        System.out.println("Det er " + currentPlayer.getName() + "'s tur");
+
+
     }
 }
