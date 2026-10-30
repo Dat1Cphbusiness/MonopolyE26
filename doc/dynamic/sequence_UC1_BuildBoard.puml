@@ -1,12 +1,30 @@
 @startuml
+
+participant Main
+participant Game
+participant FileIO
+participant Board
+participant Field
+participant CardDeck
+participant Card
+
 Main -> Game: startSession()
-'indsæt kald til readBoardData
-'indsæt kald til konstruktoren i Board
-'indsæt kald til createFields
-'indsæt loop
-'indsæt kald til konstruktoren i Field
-'indsæt kald til readBoardData
-'indsæt kald til konstruktoren i CardDeck
-'indsæt kald til createCards
-'indsæt kald til konstruktoren i Card
+
+'indsæt kald til createGameAssets(fielddata) i Game
+'indsæt kald til readData i FileIO for at få indlæst felter
+'indsæt kald til readData i FileIO for at få indlæst kort
+'indsæt kald til Board klassens konstruktor, med de to String array's som argument
+'indsæt kald fra Board til CardDeck klassens konstruktor, send carddata med videre som arguement
+'indsæt kald fra CardDeck egen createCards metode, send carddata med videre som argument
+'indsæt et loop der gennemløber alle elementer i carddata
+'indsæt et kald fra CardDeck til Card klassens konstructor
+'returner en Card instans fra Card
+'returner CardDeck instansen
+'indsæt kald fra Board til egen createFields metode, send fieldddata med som arguement
+'indsæt et loop der gennemløber alle elementer i fielddata
+'indsæt et kald fra Board til Field  klassens konstructor
+'returner en Field  instans fra Field
+
 @enduml
+
+
