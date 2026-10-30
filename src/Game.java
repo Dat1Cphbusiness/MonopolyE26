@@ -8,6 +8,7 @@ public class Game {
     private List<Player> players;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
+    private Player currentPlayer;
 
 
     public Game(String name, int maxPlayers){
@@ -33,12 +34,20 @@ public class Game {
         }
 
     }
-    public void registerPlayers(){
-
-        while(this.players.size() < this.maxPlayers) {
-
-            String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+    public void registerPlayers() {
+        int playerNum = ui.promptNumeric("Tast antal deltagere.");
+        boolean isValidNumber = false;
+        try {
+            if (playerNum <= maxPlayers && playerNum >= 2 && !isValidNumber)
+                while (this.players.size() < this.maxPlayers && this.players.size() <= playerNum) {
+                    String playerName = ui.promptText("Tast spiller navn");
+                    this.createPlayer(playerName, 0);
+                }else if(playerNum == this.players.size()){
+                isValidNumber=true;
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println("Ugyldigt antal spillere, vælg mellem 2-6.");
+            registerPlayers();
         }
     }
 
