@@ -38,7 +38,7 @@ public class Game {
     }
 
     public void runGameLoop(){
-
+        //hej
         currentPlayer = players.get(0);
         ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
 
