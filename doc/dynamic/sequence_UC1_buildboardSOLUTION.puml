@@ -1,0 +1,73 @@
+@startuml
+participant Main
+participant Game
+participant FileIO
+participant Board
+participant Field
+participant CardDeck
+participant Card
+
+Main -> Game: startSession()
+
+'indsæt kald til createGameAssets(fielddata) i Game
+Game -> Game: createGameAssets()
+activate Game
+
+'indsæt kald til readData i FileIO for at få indlæst felter
+Game -> FileIO: fielddata = readData("fields.csv, 40")
+activate FileIO
+return fielddata
+
+
+
+'indsæt kald til readData i FileIO for at få indlæst kort
+Game -> FileIO: readData("cards.csv", 100)
+activate FileIO
+return carddata
+
+'indsæt kald til Board klassens konstruktor, med de to String array's som argument
+Game -> Board : new Board(fielddata, carddata)
+activate Board
+
+'indsæt kald fra Board til CardDeck klassens konstruktor, send carddata med videre som arguement
+Board -> CardDeck :new CardDeck(carddata)
+activate CardDeck
+
+'indsæt kald fra CardDeck egen createCards metode, send carddata med videre som argument
+CardDeck -> CardDeck : createCards(carddata)
+
+'indsæt et loop der gennemløber alle elementer i carddata
+loop for each element in carddata
+
+'indsæt et kald fra CardDeck til Card klassens konstructor
+'returner en Card instans fra Card
+ CardDeck -> Card : new Card(message, income, cost, event)
+ activate Card
+ return card
+end
+
+'returner CardDeck instansen
+return  cardDeck
+
+'indsæt kald fra Board til egen createFields metode, send fieldddata med som arguement
+Board -> Board : createFields(fielddata)
+
+'indsæt et loop der gennemløber alle elementer i fielddata
+loop  for each element in fielddata
+'indsæt et kald fra Board til Field  klassens konstructor
+'returner en Field  instans fra Field
+Board -> Field : new Field(id, label, cost, income)
+activate Field
+return field
+
+end
+
+
+
+
+'returner Board
+return board
+
+deactivate Game
+@enduml
+
