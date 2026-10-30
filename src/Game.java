@@ -22,6 +22,12 @@ public class Game {
         players = new ArrayList<>();
 
     }
+
+    public void createGameAssets(){
+
+
+    }
+
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
         ui.displayMessage("Velkommen til Matador");
@@ -65,18 +71,35 @@ public class Game {
     }
     public void endSession(){
         ArrayList<String> playersData = new ArrayList<>();
-
+        System.out.println("Spillet er afsluttet");
         for(Player p:players){
             playersData.add(p.toString());
 
         }
+
         io.saveData(playersData, "data/playerData.csv", "Name, Balance");
     }
 
     public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
         Collections.shuffle(players);
-        currentPlayer = players.get(0);
+        while (continueGame){
+        currentPlayer = players.get(count % players.size());
+        throwAndMove();
+        continueGame = ui.promptBinary("Fortsæt spillet? (Y/N)");
+        count++;}
+
+    }
+
+    public void throwAndMove(){
         System.out.println("Det er " + currentPlayer.getPlayerName() + " tur!");
+
+    }
+
+    public void landAndAct(){
+
+
     }
 
 
