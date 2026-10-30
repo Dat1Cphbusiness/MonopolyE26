@@ -37,6 +37,17 @@ public class Game {
 
     }
 
+    public void throwAndMove(){
+        ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+
+    }
+    public void landAndAct(){
+
+    }
+
+
+
+
     public void runGameLoop(){
 
         int count = 0;
@@ -44,11 +55,11 @@ public class Game {
 
         while(continueGame){
             currentPlayer = players.get(count);
-            ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+            throwAndMove();
 
             count++;
 
-            count = (count + 1) % players.size();
+            count = (count) % players.size();
 
             continueGame = ui.promptBinary("Fortsæt? (Y/N)");
 
