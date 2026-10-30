@@ -1,0 +1,30 @@
+@startuml
+
+participant Main as main
+participant Game as game
+participant Dice as dice
+participant Player as player
+participant Board as board
+
+game -> game : throwAndMove()
+activate game
+
+game -> TextUI : displayMessage ("Det er "+currentPlayer.getName+"'s tur")
+
+game -> dice : int result = rollDiceSum()
+activate dice
+return 8
+
+game -> TextUI : displayMessage(currentPlayer.getName+" slog "+ result )
+
+game -> player: int newPosition = updatePosition( result )
+activate player
+return 9
+
+game -> board : Field f = getField( newPosition )
+activate board
+return f   //(fx. Valby Langgade))//
+
+game -> game : landAndAct(f)
+
+@enduml
