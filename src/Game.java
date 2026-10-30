@@ -42,8 +42,13 @@ public class Game {
         boolean continueGame = true;
 
         while (continueGame){
-            currentPlayer = players.get(count);
-            ui.displayMessage("Det er "+currentPlayer.getName()+"' tur");
+            try {
+                currentPlayer = players.get(count);
+                count++;
+                ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+            } catch (IndexOutOfBoundsException e){
+                count = 0;
+            }
         }
 
     }
