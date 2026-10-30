@@ -46,9 +46,17 @@ public class Game {
             }
             currentPlayer = players.get(count);
             count++;
-            ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+            throwAndMove();
             continueGame = ui.promptBinary("Fortsæt? Y/N");
         }
+
+    }
+
+    public void throwAndMove(){
+        ui.displayMessage("Det er " + currentPlayer.getName() + "' tur");
+    }
+
+    public void landAndAct(){
 
     }
 
