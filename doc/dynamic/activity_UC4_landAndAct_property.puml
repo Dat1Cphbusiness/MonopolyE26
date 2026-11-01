@@ -1,0 +1,20 @@
+@startuml
+!pragma layout smetana
+(*)  --> "Land on Property"
+
+ If "No one owns the property?" then
+
+  --> [true] "Give option to buy"
+
+  else
+
+
+    --> [false] If "Owner is not currentPlayer"
+           --> [true] "Pay rent"
+        Endif
+  Endif
+
+
+
+
+@enduml
