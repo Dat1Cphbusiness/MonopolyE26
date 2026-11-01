@@ -10,7 +10,7 @@ participant Card
 
 Main -> Game: startSession()
 
-'indsæt kald til createGameAssets(fielddata) i Game
+'indsæt kald til createGameAssets() i Game
 'indsæt kald til readData i FileIO for at få indlæst felter
 'indsæt kald til readData i FileIO for at få indlæst kort
 'indsæt kald til Board klassens konstruktor, med de to String array's som argument
