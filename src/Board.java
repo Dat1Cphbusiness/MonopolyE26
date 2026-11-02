@@ -4,6 +4,7 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
+       // Chance.cardDeck = new CardDeck(carddata);
      //   CardDeck cd = new CardDeck(carddata);
        // Chance.cardDeck = cd;
     }
@@ -22,12 +23,47 @@ public class Board {
             int income = Integer.parseInt(values[4]); //Pris for andre spillere at lande på et allerede ejet felt af anden spiller
             int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
 
+            Field f = null;
 
-            fields[i] = new Field(ID, label, cost, income);
+            switch (type) {
+                case "Chance":
+                    f = new Chance(ID, label);
+                    break;
+                case "Start":
+                    f = new Start(ID, label, income);
+                    break;
+                case "Plot":
+                    f = new Plot(ID, label, income, cost, seriesID);
+                    break;
+                case "ShippingLine":
+                    f = new ShippingLine(ID, label, income, cost, seriesID);
+                    break;
+                case "Tax":
+                    f = new Tax(ID,label,cost);
+                    break;
+                case "Brewery":
+                    f = new Brewery(ID, label, income, cost, seriesID);
+                    break;
+                case "Parking":
+                    f = new Parking(ID, label);
+                    break;
+                case "Prison":
+                    f = new Prison(ID, label);
+                    break;
+                case "Visit":
+                    f = new Visit(ID, label);
+                    break;
+                default:
+                    System.out.println("No such type available");
+                    break;
+            }
+            fields[i] = f;
         }
     }
 
     public Field getField(int id) {
+
+
         return fields[id-1];
     }
 }

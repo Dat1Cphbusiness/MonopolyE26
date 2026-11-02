@@ -11,6 +11,8 @@ public class Game {
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
     private Player currentPlayer;
+    private Board board;
+    private Dice dice = new Dice();
 
     public Game(String name, int maxPlayers) {
         this.name = name;
@@ -40,7 +42,7 @@ public class Game {
     public void createAssets(){
            String[] fielddata = io.readData("data/fielddata.csv", 40);
            String[] carddata = io.readData("data/carddata.csv", 100);
-           Board board = new Board(fielddata, carddata);
+           board = new Board(fielddata, carddata);
 
            Field f = board.getField(40);
            System.out.println(f);//Beskrivelse af rådhuspladsen*/
@@ -104,11 +106,11 @@ public class Game {
     }
 
     public void throwAndMove(){
-      /*  ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = dice.rollDice();
+        ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+        int result = dice.rollDiceSum();
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
-        this.landAndAct(f);*/
+        this.landAndAct(f);
     }
 
     public void landAndAct(Field f){

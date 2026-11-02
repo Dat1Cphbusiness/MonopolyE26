@@ -12,6 +12,12 @@ public class Field {
         this.income = income;
     }
 
+    public Field(int ID, String label) {
+        this.ID = ID;
+        this.label = label;
+    }
+
+
     @Override
     public String toString() {
         return "ID: " + ID + "\nLabel: " + label;
