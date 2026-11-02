@@ -1,4 +1,6 @@
 public class Player {
+    private static final int MAX_BOARD_FIELDS = 40;
+
     private String name;
     private int balance;
     private int position;
@@ -9,11 +11,11 @@ public class Player {
     }
 
     public int updatePosition(int value) {
-        if (this.position > value) {
+        this.position += value;
+        if (this.position > MAX_BOARD_FIELDS) {
+            this.position -= MAX_BOARD_FIELDS;
             Bank.deposit(200, this);
         }
-
-        this.position = value;
 
         return this.position;
     }
