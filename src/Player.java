@@ -1,19 +1,37 @@
 public class Player {
     private String name;
-    private int score;
-    
-    public Player(String name, int score){
+    private int balance;
+    private int position;
+
+    public Player(String name, int startAmount) {
         this.name = name;
-        this.score = score;
+        this.balance = startAmount;
     }
 
-    @Override
-    public String toString(){
-        return name + ", "+ score;
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     public String getName(){
         return this.name;
+    }
 
+    public int updatePosition(int value) {
+        int newPosition = position + value;
+        if (newPosition > LAST_FIELD_POSTION) {
+            newPosition = newPosition - LAST_FIELD_POSTION;
+            Bank.deposit(4000, this);
+        }
+        position = newPosition;
+        return position;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + balance;
     }
 }
