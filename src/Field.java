@@ -18,6 +18,6 @@ public class Field {
     }
 
     public String onLand(Player p) {
-        return p.getName() + " has landed on field " + this.toString();
+        return p.getName() + " has landed on field " + this;
     }
 }

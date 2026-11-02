@@ -4,20 +4,26 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    // Tilføj metoden String[] readData(String path, int length) -  path er stien til filen der skal loades og length er antallet af linjer i filen
     public String[] readData(String path, int length) {
+
 
         // start metoden med at initialisere et String[] data med det antal pladser som er angivet i parameterlisten (length)
         String [] data = new String[length];
+        File file = new File(path);
+        try{
+           Scanner scan = new Scanner(file);
+            scan.nextLine();//skip header
 
+            int counter =0;
+            while(scan.hasNextLine()){
+                String s = scan.nextLine();
+                data[counter] = s;
+                counter++;
+            }
+        }catch (FileNotFoundException e){
 
-        //todo:
-        // - Lav en instans af File til at loade den fil der er angivet i path.
-        // -  Lige efter instantiering af File, tilføj en tom try-catch blok som fanger FileNotFoundException
-       //  Brug Scanner klassen i kombination med et loop for at læse hver enkelt linje i filen.
-        // For hver iteration I loop’et skal linjen lægges ind i data.
-       //         Dette kræver at du initialiserer en counter udenfor loop’et, som tælles op med 1 inde i loopet)
-        // returner data som lige er blevet fyldt op
+        }
+
 
         return data;
     }
