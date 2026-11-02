@@ -8,6 +8,7 @@ public class Player {
     public Player(String name, int startAmount) {
         this.name = name;
         this.balance = startAmount;
+        this.position = 1;
     }
 
     public int getBalance() {

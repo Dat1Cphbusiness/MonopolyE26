@@ -108,12 +108,14 @@ public class Game {
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
         int result = dice.rollDiceSum();
+        ui.displayMessage(currentPlayer.getName()+" slog "+result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
         this.landAndAct(f);
     }
 
     public void landAndAct(Field f){
-        f.onLand(currentPlayer);
+        String msg =f.onLand(currentPlayer);
+        System.out.println(msg);
     }
 }
