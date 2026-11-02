@@ -1,6 +1,6 @@
 public class Player {
     private static final int LAST_FIELD_POSTION = 40;
-
+    private static final int PERIODIC_INCOME = 4000;
     private String name;
     private int balance;
     private int position;

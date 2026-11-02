@@ -7,6 +7,7 @@ public class Bank {
             return;
         }
         balance -= amount;
+
         player.setBalance(player.getBalance() + amount);
     }
 
