@@ -4,6 +4,7 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
+       // Chance.cardDeck = new CardDeck(carddata);
      //   CardDeck cd = new CardDeck(carddata);
        // Chance.cardDeck = cd;
     }
