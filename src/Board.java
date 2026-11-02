@@ -4,8 +4,11 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
-     //   CardDeck cd = new CardDeck(carddata);
-       // Chance.cardDeck = cd;
+        //CardDeck cd = new CardDeck(carddata);
+        //Chance.cardDeck = cd;
+
+        //Chance.cardDeck = new CardDeck(carddata);
+
     }
 
 
@@ -23,7 +26,19 @@ public class Board {
             int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
 
 
-            fields[i] = new Field(ID, label, cost, income);
+            fields[i] = null;
+
+            switch (type){
+                case "Visit": fields[i] = new Visit(ID, label, cost,  income);break;
+                case "Chance": fields[i] = new Chance(ID, label, cost,  income);break;
+                case "Start": fields[i] = new Start(ID, label, cost,  income);break;
+                case "Parking": fields[i] = new Parking(ID, label, cost,  income); break;
+                case "Property": fields[i] = new Property (ID, label, cost,  income, seriesID); break;
+                case "Prison": fields[i] = new Prison (ID, label, cost,  income);break;
+                case "Tax": fields[i] = new Tax(ID, label, cost,  income);break;
+                default: System.out.println("No such type available");break;
+            }
+
         }
     }
 
