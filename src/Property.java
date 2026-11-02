@@ -1,4 +1,4 @@
-public class Property extends Field {
+public class Property extends Field implements IOption{
     private Player owner;
     private int serieID;
     private boolean isMonopolized;
@@ -22,5 +22,13 @@ public class Property extends Field {
         //du kan købe denne grund for x penge deed = show.
 
         return super.onLand(p);
+    }
+
+    public String onAccept(){
+        return null;
+    }
+
+    public String onReject(){
+        return null;
     }
 }

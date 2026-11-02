@@ -4,8 +4,9 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
-     //   CardDeck cd = new CardDeck(carddata);
-       // Chance.cardDeck = cd;
+        Chance.cardDeck = new CardDeck(carddata);
+        //   CardDeck cd = new CardDeck(carddata);
+        // Chance.cardDeck = cd;
     }
 
 
@@ -24,10 +25,44 @@ public class Board {
 
 
             fields[i] = new Field(ID, label, cost, income);
-        }
-    }
+            switch (type.toLowerCase()) {
+                case "start":
+                    Field start = new Start(ID, label, cost, income);
+                    break;
+                case "plot":
+                    Field plot = new Plot(ID, label, cost, income, seriesID);
+                    break;
+                case "chance":
+                    Field chance = new Chance(ID, label, cost, income);
+                    break;
+                case "tax":
+                    Field tax = new Tax(ID, label, cost, income);
+                    break;
+                case "parking":
+                    Field parking = new Parking(ID, label, cost, income);
+                    break;
+                case "prison":
+                    Field prison = new Prison(ID, label, cost, income);
+                    break;
+                case "brewery":
+                    Field brewery = new Brewery(ID, label, cost, income, seriesID);
+                    break;
+                case "shippingline":
+                    Field shippingLine = new ShippingLine(ID, label, cost, income, seriesID);
+                    break;
+                case "visit":
+                    Field visit = new Visit(ID, label, cost, income);
+                    break;
+                default:
+                    System.out.println("There is no such type available");
+            }
 
-    public Field getField(int id) {
-        return fields[id-1];
+
+        }
+
+
+    }
+    public Field getField ( int id){
+        return fields[id - 1];
     }
 }

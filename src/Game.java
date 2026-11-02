@@ -34,16 +34,17 @@ public class Game {
         }else {
             registerPlayers();
         }
-        createAssets();
+
     }
-
     public void createAssets(){
-           String[] fielddata = io.readData("data/fielddata.csv", 40);
-           String[] carddata = io.readData("data/carddata.csv", 100);
-           Board board = new Board(fielddata, carddata);
+           String[] fielddata = io.readData("data/fields.csv", 40);
+           String[] cardddata = io.readData("data/carddata.csv", 100);
+         //  Board board = new Board(fielddata, carddata);
 
-           Field f = board.getField(40);
-           System.out.println(f);//Beskrivelse af rådhuspladsen*/
+
+           //
+          // Field f = board.getField(40);
+         // System.out.println(f);//Beskrivelse af rådhuspladsen
 
     }
 
@@ -104,14 +105,10 @@ public class Game {
     }
 
     public void throwAndMove(){
-      /*  ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = dice.rollDice();
-        int newPosition = currentPlayer.updatePosition(result);
-        Field f = board.getField(newPosition);
-        this.landAndAct(f);*/
+        ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
     }
 
-    public void landAndAct(Field f){
-        f.onLand(currentPlayer);
+    public void landAndAct(){
+
     }
 }
