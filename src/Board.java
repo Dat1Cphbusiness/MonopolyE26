@@ -24,7 +24,7 @@ public class Board {
             int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
 
             Field f = null;
-            fields[i] = f;
+
             switch (type) {
                 case "Chance":
                     f = new Chance(ID, label);
@@ -53,15 +53,17 @@ public class Board {
                 case "Visit":
                     f = new Visit(ID, label);
                     break;
-                default: {
+                default:
                     System.out.println("No such type available");
                     break;
-                }
             }
+            fields[i] = f;
         }
     }
 
     public Field getField(int id) {
+
+
         return fields[id-1];
     }
 }

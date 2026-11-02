@@ -107,7 +107,7 @@ public class Game {
 
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = dice.rollDice();
+        int result = dice.rollDiceSum();
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
         this.landAndAct(f);
