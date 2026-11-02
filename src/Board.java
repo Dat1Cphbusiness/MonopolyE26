@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Board {
-    private final int MAX_BOARD_SIZE = 40;
-    private Field[] fields = new Field[MAX_BOARD_SIZE]; // Maximum amount of fields per board.
+    private final int MAX_BOARD_SIZE = 40; // Maximum amount of fields per board.
+    private Field[] fields = new Field[MAX_BOARD_SIZE];
 
     public Board(String[] fielddata, String[] carddata) {
         this.createFields(fielddata);
