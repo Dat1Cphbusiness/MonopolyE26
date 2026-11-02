@@ -1,0 +1,210 @@
+@startuml
+!pragma layout smetana
+
+class Main{
++ static void main(String[] args)
+}
+
+
+class Game{
+ - String name
+ - ArrayList<Player> players
+ - Player currentPlayer
+ - Board board
+ - Dice dice
+ 'utilities
+  - TextUI ui
+  - FileIO io
+  'Contructor
+ + Game(String name)
+ 'Methods
+ - void startSession()
+ - void createGameAssets()
+ - void createPlayer(String name, int balance)
+ - void displayPlayers()
+ - void registerPlayers()
+ + void runGameLoop()
+ - void throwAndMove()
+ - void landAndAct()
+ - void endSession()
+
+}
+
+
+class Player{
+- String name
+- int balance
+- int position
+- ArrayList<Property> deeds
+- ArrayList<Card> chanceCards
++ Player(String name, int startAmount)
++ int updatePosition(int value)
+- boolean startPassed()
++ boolean buyProperty(Property pf)
++ String toString()
++ String getName()
++ int getBalance()
++ void setBalance(int amount)
+}
+
+
+class Bank{
+- {static} int balance
++ {static} void deposit(int amount, Player p)
++ {static} boolean withdraw(int amount, Player p)
++ {static} boolean transfer(int amount, Player giver, Player recipient)
++ {static} int getBalance()
+}
+
+class Field{
+ - String label
+ - int ID
+ # int cost
+ # int income
+ # String option
+ + Field(int ID, String label, int cost, int income)
+ + String toString()
+ + String onLand(Player p)
+ + String onAccept(Player p)
+ + String onReject(Player p)
+}
+class Board{
+ - Field[] fields
+ + Board(String [] fielddata, String [] carddata)
+'konstruktoren instansierer CardDeck med carddata som argument og tildeler til Chance.cardDeck
+ - void createFields(String [] data)
+ + Field getField(int id)
+
+}
+
+class Property{
+ - Player owner
+ - int seriesID
+ - boolean isMonopolized
+ + Property(int ID, String label, int cost, int income, int seriesID)
+ + String toString()
+  + String onLand(Player p)
+  + String onAccept(Player p)
+  + String onReject(Player p)
+}
+
+class Plot{
+ - int buildings
+ + Plot(int ID, String label, int cost, int income, int seriesID)
+ + String toString()
+  + String onLand(Player p)
+  + String onAccept(Player p)
+  + String onReject(Player p)
+ }
+
+ class Brewery{
+  + Brewery(int ID, String label, int cost, int income, int seriesID)
+  + String toString()
+   + String onLand(Player p)
+   + String onAccept(Player p)
+   + String onReject(Player p)
+  }
+
+  class ShippingLine{
+   + ShippingLine(int ID, String label, int cost, int income, int seriesID)
+   + String toString()
+    + String onLand(Player p)
+    + String onAccept(Player p)
+    + String onReject(Player p)
+   }
+
+class Chance{
+ - {static} CardDeck cardDeck
+ + Chance(int ID, String label)
+}
+class Tax{
+ + Tax(int ID, String label, int cost)
+}
+class Start{
+ + Start(int ID, String label, int income)
+}
+class Parking{
+ + Parking(int ID, String label)
+}
+class Visit{
+ + Visit(int ID, String label)
+}
+class CardDeck {
+- Card[] cards
+- int counter
++ CardDeck(String[] carddata)
++ Card getNext()
++ void createCards(String[] data)
+}
+class Card{
+-String message
+-int income
+-int cost
+-String event
++Card(String message, int income, int cost, String event)
++String toString()
++ int getCost()
++ int getIncome()
++ String getEvent()
++ String getMessage()
+}
+
+class Dice{
+ - int[] diceRoll
+ - boolean isDouble
+ - int doubleDiceCounter
+ + int rollDiceSum()
+ + boolean getIsDouble()
+ + int getDoubleDiceCounter()
+ + void resetDoubleDiceCounter()
+ }
+package "util" {
+class TextUI {
+- Scanner scan
++ boolean promptBinary(String msg)
++ String promptText(String msg)
++ int promptNumeric(String msg)
++ ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
++ void displayMessage(String msg)
++ void displayList(ArrayList<String> list, String msg)
+}
+
+class FileIO{
++ void saveData(ArrayList<String> data, String path, String header)
++ ArrayList<String> readData(String path)
++ String[] readData(String path, int length)
+}
+}
+interface IOption{
+ String onAccept(Player p)
+ String onReject(Player p)
+}
+IOption <|-- Property
+IOption <|-- Tax
+IOption <|-- Prison
+Field <|-- Property: is-a
+Field <|-- Chance: is-a
+Field <|-- Start: is-a
+Field <|-- Parking: is-a
+Field <|-- Visit: is-a
+Field <|-- Tax: is-a
+Field <|-- Prison: is-a
+
+Property <|-- Plot: is-a
+Property <|-- Brewery: is-a
+Property <|-- ShippingLine: is-a
+Game *-- TextUI
+Main *-- Game
+Game *-- Player: 2-6
+Game *-- FileIO
+Player --> Bank:uses
+Game *-- Board:1
+Board *-- Field:40
+Board ..> CardDeck : creates
+Chance --> CardDeck : uses (static)
+CardDeck *-- Card:100
+Game *-- Dice
+Player o-- Card
+Player o-- Field
+
+@enduml
