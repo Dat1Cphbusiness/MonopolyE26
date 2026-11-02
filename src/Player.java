@@ -1,4 +1,6 @@
 public class Player {
+    private static final int LAST_FIELD_POSTION = 40;
+
     private String name;
     private int balance;
     private int position;
@@ -16,7 +18,7 @@ public class Player {
         this.balance = balance;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
