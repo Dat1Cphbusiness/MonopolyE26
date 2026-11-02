@@ -104,11 +104,11 @@ public class Game {
     }
 
     public void throwAndMove(){
-      /*  ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+        ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
         int result = dice.rollDice();
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
-        this.landAndAct(f);*/
+        this.landAndAct(f);
     }
 
     public void landAndAct(Field f){

@@ -22,8 +22,11 @@ public class Board {
             int income = Integer.parseInt(values[4]); //Pris for andre spillere at lande på et allerede ejet felt af anden spiller
             int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
 
+            Field f = null;//new Field(ID, label, cost, income);
 
-            fields[i] = new Field(ID, label, cost, income);
+
+
+            fields[i] = f;
         }
     }
 
