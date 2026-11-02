@@ -2,7 +2,7 @@ public class Board {
     private Field[] fields;
 
     public Board(String[] fielddata, String[] carddata) {
-        fields = Field[fielddata.length];
+        fields = new Field[fielddata.length];
         createFields(fielddata);
     }
 
@@ -21,7 +21,7 @@ public class Board {
             int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
 
 
-            fields[i] = new Field(ID, label, cost, income, seriesID);
+            fields[i] = new Field(ID, label, cost, income);
         }
     }
 
