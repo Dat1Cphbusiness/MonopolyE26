@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileIO {
+public class  FileIO {
     Scanner scan;
     public String[] readData(String path, int length) {
 
