@@ -39,12 +39,12 @@ public class Game {
     public void createAssets(){
            String[] fielddata = io.readData("data/fields.csv", 40);
            String[] cardddata = io.readData("data/carddata.csv", 100);
-         //  Board board = new Board(fielddata, carddata);
+      /*     Board board = new Board(fielddata, carddata);
 
 
-           //
-          // Field f = board.getField(40);
-         // System.out.println(f);//Beskrivelse af rådhuspladsen
+
+           Field f = board.getField(40);
+             System.out.println(f);//Beskrivelse af rådhuspladsen*/
 
     }
 
