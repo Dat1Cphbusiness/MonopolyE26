@@ -5,9 +5,9 @@ public class Bank {
         if (p.getBalance() > amount) {
             p.setBalance(p.getBalance() - amount);
             balance += amount;
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static boolean deposit(int amount, Player p) {
