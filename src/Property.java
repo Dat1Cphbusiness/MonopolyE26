@@ -23,4 +23,14 @@ public class Property extends Field {
 
         return super.onLand(p);
     }
+
+    @Override
+    public String onAccept(Player p) {
+        return "";
+    }
+
+    @Override
+    public String onReject(Player p) {
+        return "";
+    }
 }
