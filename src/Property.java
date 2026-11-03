@@ -1,5 +1,5 @@
 public class Property extends Field implements IOption {
-      Player owner;
+    private Player owner;
     private int serieID;
     private boolean isMonopolized;
 
@@ -22,18 +22,7 @@ public class Property extends Field implements IOption {
         //else
         //du kan købe denne grund for x penge deed = show.
 
-        String msg = super.onLand(p);
-        if (owner == null) {
-            option = "buy";
-            msg += "Vil du købe? (Y/N)";
-        } else {
-            if (owner != p){
-                msg += "Du skal betale " + income;
-            } else {
-                //p.pay(this);
-            }
-        }
-        return msg;
+        return super.onLand(p);
     }
 
     @Override
