@@ -13,7 +13,8 @@ public class Tax extends Field implements IOption{
 
     @Override
     public String onReject(Player p) {
-        int afterTax = p.getTotalWorth()*0.10;
+        int totalworth = 20000;//p.getTotalWorth();
+        double afterTax = totalworth*0.10;
         p.pay(afterTax);
         return "Du betalte 10% af in værdi " + afterTax + " kr. til skat";
     }
