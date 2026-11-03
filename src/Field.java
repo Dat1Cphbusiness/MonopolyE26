@@ -1,5 +1,5 @@
 public class Field {
-    private String label;
+    protected String label;
     private int ID;
     private int cost;
     private int income;

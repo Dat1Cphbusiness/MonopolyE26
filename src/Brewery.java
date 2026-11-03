@@ -5,11 +5,13 @@ public class Brewery extends Property{
 
     @Override
     public String toString() {
+
         return super.toString();
     }
 
     @Override
     public String onLand(Player p) {
+
         return super.onLand(p);
     }
 }

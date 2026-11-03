@@ -29,8 +29,7 @@ public class Game {
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
                 String name = values[0];
                 int balance = Integer.parseInt(values[1].trim());
-                Player p = new Player(name, balance);
-                players.add(p);
+               createPlayer(name, balance);
             }
 
         }else {
@@ -43,10 +42,6 @@ public class Game {
            String[] fielddata = io.readData("data/fielddata.csv", 40);
            String[] carddata = io.readData("data/carddata.csv", 100);
            board = new Board(fielddata, carddata);
-
-           Field f = board.getField(40);
-           System.out.println(f);//Beskrivelse af rådhuspladsen*/
-
     }
 
     public void runGameLoop(){
@@ -75,7 +70,7 @@ public class Game {
         while (this.players.size() < totalPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+            this.createPlayer(playerName, 30000);
         }
 
         Collections.shuffle(players);
@@ -107,7 +102,7 @@ public class Game {
 
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = 8;//dice.rollDiceSum();
+        int result = 2;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -115,7 +110,20 @@ public class Game {
     }
 
     public void landAndAct(Field f){
-        String msg = f.onLand(currentPlayer);
-        System.out.println(msg);
+    /*    String msg = f.onLand(currentPlayer);
+        System.out.println(msg);//VIL DU KØBE
+
+        boolean response = false;
+
+        if(f.option !=null){//option "BUY""
+
+            response= ui.promptBinary("");
+            if(response){
+                f.onAccept();
+            }else{
+                f.onReject();
+            }
+        }
+*/
     }
 }
