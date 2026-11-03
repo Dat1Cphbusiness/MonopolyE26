@@ -1,5 +1,5 @@
 public class Property extends Field implements IOption {
-    private Player owner;
+    protected Player owner;
     private int serieID;
     private boolean isMonopolized;
 
@@ -15,13 +15,19 @@ public class Property extends Field implements IOption {
 
     @Override
     public String onLand(Player p) {
-        //Du er landet på x feldt
-        //Det er "x type flet"
-        //hvis property(ejet) = ejet af x person betal = deeds leje (ejer du dne selv)
-        //else
-        //du kan købe denne grund for x penge deed = show.
+        String msg = super.onLand(p);
 
-        return super.onLand(p);
+        if (owner == null) {
+            option = "buy";
+            msg += "\nVil du købe? (Y/N)";
+
+            // p.pay(this);
+
+        } else {
+            msg += "\nGrunden er ejet og kan ikke købes.";
+        }
+
+        return msg;
     }
 
     @Override
@@ -34,3 +40,9 @@ public class Property extends Field implements IOption {
         return "";
     }
 }
+
+// Developer A
+// Forsæt if-else blokken
+// true: ingen ejer ejendommen, sæt option til "buy", tilføj flg til msg: msg+= "Vil du købe?" (Y/N)"
+// - Kald dernæst spillerens pay metode med feltet (this) som argument
+// (Obs: Metoden findes ikke endnu , udkommenter, for at compile)

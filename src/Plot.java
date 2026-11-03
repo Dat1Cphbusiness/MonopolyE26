@@ -10,11 +10,22 @@ public class Plot extends Property {
 
     @Override
     public String onLand(Player p) {
-        // Spiller lander på property
-        // Er den ejet af en andens spiller, og ejeren ikke er currentPlayer = pay rent
-        // er den ikke ejet af en anden spiller = Give option to buy
-        String s = super.onLand(p);
-        s+= " kunne du tænke at købe" +this.label;
-        return s;
+        String msg = super.onLand(p);
+
+        if (owner == p /*&& checkForMonopoly()*/ ) {
+            option = "build";
+            msg += "\nVil du bygge? (Y/N)";
+        }
+
+        return msg;
     }
 }
+
+// Developer B
+// I Plot klassens onLand metode foretag flg ændring
+// return super.OnLand();
+// til: String msg = super.onLand; return msg;
+// Imellem erklæring og retunæring af msg lav et if-else syayement der tjekker om owner er p og pm der er monopol på feletet (kald checkFOrMonopoly())
+// (OBS: Metoden findes ikke endnu, udkommentere, for at compile)
+// true: spilleren ejer ejendommen OG har monopol
+// - sæt option til "build" og tilføj flg til msg: msg+= "Vil du bygge?" (Y/N):"

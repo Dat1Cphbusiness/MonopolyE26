@@ -3,7 +3,7 @@ public class Field {
     private int ID;
     private int cost;
     private int income;
-    private String option;
+    protected String option;
 
     public Field(int ID, String label, int cost, int income) {
         this.ID = ID;
