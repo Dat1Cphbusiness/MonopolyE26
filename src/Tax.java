@@ -7,7 +7,8 @@ public class Tax extends Field implements IOption{
 
     @Override
     public String onAccept(Player p) {
-        return "";
+        p.pay(cost);
+        return "Player " + p.getName() +" paid " + this.cost;
     }
 
     @Override
