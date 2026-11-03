@@ -14,7 +14,7 @@ public class Tax extends Field implements IOption{
     @Override
     public String onReject(Player p) {
         int totalworth = 20000;//p.getTotalWorth();
-        double afterTax = totalworth*0.10;
+        int afterTax = totalworth/10;
         p.pay(afterTax);
         return "Du betalte 10% af in værdi " + afterTax + " kr. til skat";
     }
@@ -22,6 +22,7 @@ public class Tax extends Field implements IOption{
     @Override
     public String onLand(Player p) {
         String s = super.onLand(p);
+        this.option = "TAX";
         s += "\n Du skal betale et beløb der svarer til 10% af dine aktiver. Vil du hellere betale et fast beløb på" + this.cost + "kr? Y/N \n";
         return s;
     }

@@ -52,5 +52,6 @@ public class Player {
 
     public boolean buyProperty(Field f) {
         pay(f.cost);
+        return true;
     }
 }
