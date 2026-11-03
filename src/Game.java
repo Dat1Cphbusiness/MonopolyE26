@@ -75,7 +75,7 @@ public class Game {
         while (this.players.size() < totalPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+            this.createPlayer(playerName, 30000);
         }
 
         Collections.shuffle(players);
@@ -107,7 +107,7 @@ public class Game {
 
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = 8;//dice.rollDiceSum();
+        int result = 39;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -117,5 +117,6 @@ public class Game {
     public void landAndAct(Field f){
         String msg = f.onLand(currentPlayer);
         System.out.println(msg);
+        System.out.println(f.toString() + ", cost: " + f.getCost() + ", income: " + f.getIncome());
     }
 }
