@@ -1,8 +1,8 @@
 public class Field {
     protected String label;
     private int ID;
-    protected int cost;
-    private int income;
+    private int cost;
+    protected int income;
     protected String option;
 
     public Field(int ID, String label, int cost, int income) {
@@ -25,8 +25,5 @@ public class Field {
 
     public String onLand(Player p) {
         return p.getName() + " has landed on field " + this;
-    }
-    public String getOption(){
-        return option;
     }
 }
