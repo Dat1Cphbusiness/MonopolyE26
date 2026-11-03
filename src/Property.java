@@ -8,9 +8,9 @@ public class Property extends Field implements IOption {
         this.serieID = seriesID;
     }
 
-    @Override
+    @Override //Er det relevant at overskrive denne 3 gange, når overskrivninger blot returner "super.tostring()"?
     public String toString() {
-        return super.toString() + serieID;
+        return super.toString() + " (seriesID: " + serieID + ")"; //TODO: tilføjet mellemrum og beskrivelse af seriesID i print
     }
 
     @Override

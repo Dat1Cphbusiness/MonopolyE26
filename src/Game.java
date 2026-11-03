@@ -44,8 +44,8 @@ public class Game {
            String[] carddata = io.readData("data/carddata.csv", 100);
            board = new Board(fielddata, carddata);
 
-           Field f = board.getField(40);
-           System.out.println(f);//Beskrivelse af rådhuspladsen*/
+           //Field f = board.getField(40);
+           //System.out.println(f);//Beskrivelse af rådhuspladsen*/
 
     }
 
@@ -75,7 +75,7 @@ public class Game {
         while (this.players.size() < totalPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+            this.createPlayer(playerName, 30000); //TODO: Rettet "score" fra 0 til 30.000 da "score" er spillerens penge (måske variabel navn burde ændres)
         }
 
         Collections.shuffle(players);
@@ -107,7 +107,7 @@ public class Game {
 
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = 8;//dice.rollDiceSum();
+        int result = 12;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);

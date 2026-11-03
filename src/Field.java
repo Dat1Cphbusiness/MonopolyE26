@@ -23,6 +23,7 @@ public class Field {
         return "ID: " + ID + "\nLabel: " + label;
     }
 
+
     public String onLand(Player p) {
         return p.getName() + " has landed on field " + this;
     }

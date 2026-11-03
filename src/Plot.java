@@ -8,11 +8,11 @@ public class Plot extends Property {
         return super.toString();
     }
 
-    @Override
+/*    @Override //TODO: Udkommenteret for at kunne få printet plots i terminal
     public String onLand(Player p) {
         // Spiller lander på property
         // Er den ejet af en andens spiller, og ejeren ikke er currentPlayer = pay rent
         // er den ikke ejet af en anden spiller = Give option to buy
         return "";
-    }
+    }*/
 }

@@ -13,14 +13,14 @@ public class Board {
 
     private void createFields(String[] data) {
         for (int i = 0; i < data.length; i++) {
-            String[] values = data[i].replaceAll("\\s+", "").split(","); //Fjern alle mellemrum og split på ","
+            String[] values = data[i].split(","); //TODO: tidligere metode har fjernet ALLE mellemrum (Fjernet: .replaceAll("\\s+", ""))
 
-            int ID = Integer.parseInt(values[0]); //Grund ID
-            String type = values[1]; //Type af felt
-            String label = values[2]; //Navn på felt (Fx rådhuspladsen)
-            int cost = Integer.parseInt(values[3]); //Grund pris
-            int income = Integer.parseInt(values[4]); //Pris for andre spillere at lande på et allerede ejet felt af anden spiller
-            int seriesID = Integer.parseInt(values[5]); //SeriesID fra property (Bruges ikke endnu - skal bruges senere)
+            int ID = Integer.parseInt(values[0].trim()); //Grund ID //TODO: tilføjet: .trim() til argument
+            String type = values[1].trim(); //Type af felt //TODO: tilføjet: .trim() til argument
+            String label = values[2].trim(); //Navn på felt (Fx rådhuspladsen) //TODO: tilføjet: .trim() til argument
+            int cost = Integer.parseInt(values[3].trim()); //Grund pris //TODO: tilføjet: .trim() til argument
+            int income = Integer.parseInt(values[4].trim()); //Pris for andre spillere at lande på et allerede ejet felt af anden spiller //TODO: tilføjet: .trim() til argument
+            int seriesID = Integer.parseInt(values[5].trim()); //SeriesID fra property (Bruges ikke endnu - skal bruges senere) //TODO: tilføjet: .trim() til argument
 
             Field f = null;
 
@@ -32,16 +32,16 @@ public class Board {
                     f = new Start(ID, label, income);
                     break;
                 case "Plot":
-                    f = new Plot(ID, label, income, cost, seriesID);
+                    f = new Plot(ID, label, cost, income, seriesID); //TODO: skiftet rundt på income og cost felter bliver angivet korrekt
                     break;
                 case "ShippingLine":
-                    f = new ShippingLine(ID, label, income, cost, seriesID);
-                    break;
+                    f = new ShippingLine(ID, label, cost, income, seriesID); //TODO: skiftet rundt på income og cost felter bliver angivet korrekt
+                    break; //Tuborg squash
                 case "Tax":
                     f = new Tax(ID,label,cost);
                     break;
                 case "Brewery":
-                    f = new Brewery(ID, label, income, cost, seriesID);
+                    f = new Brewery(ID, label, cost, income, seriesID); //TODO: skiftet rundt på income og cost felter bliver angivet korrekt
                     break;
                 case "Parking":
                     f = new Parking(ID, label);
