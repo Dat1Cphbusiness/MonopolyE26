@@ -13,6 +13,7 @@ public class Game {
     private Player currentPlayer;
     private Board board;
     private Dice dice = new Dice();
+    private int count = 0;
 
     public Game(String name, int maxPlayers) {
         this.name = name;
@@ -45,7 +46,6 @@ public class Game {
     }
 
     public void runGameLoop(){
-        int count = 0;
         boolean continueGame = true;
 
         while (continueGame){
@@ -107,6 +107,17 @@ public class Game {
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
         this.landAndAct(f);
+        if (dice.getIsDouble()) {
+            dice.setDoubleDiceCounter(dice.getDoubleDiceCounter() + 1);
+            if (dice.getDoubleDiceCounter() <= 4) {
+                ui.displayMessage("Du får en ekstra tur!");
+                count--;
+            } else {
+                ui.displayMessage("Du har slået for mange dobbeltslag. Du er blevet sat i fængsel");
+                dice.resetDoubleDiceCounter();
+                f = board.getField(31);
+            }
+        }
     }
 
     public void landAndAct(Field f){
@@ -129,6 +140,10 @@ public class Game {
           msg= optionField.onReject(currentPlayer);
       }
       ui.displayMessage(msg);
-}
+    }
+
+    public void doubleDiceCounter() {
+        dice.getDoubleDiceCounter();
+    }
 
 }

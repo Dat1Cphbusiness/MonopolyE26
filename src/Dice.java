@@ -36,4 +36,12 @@ public class Dice {
     public void resetDoubleDiceCounter () {
         doubleDiceCounter = 0;
     }
+
+    public int getDoubleDiceCounter() {
+        return doubleDiceCounter;
+    }
+
+    public void setDoubleDiceCounter(int amount) {
+        doubleDiceCounter = amount;
+    }
 }
