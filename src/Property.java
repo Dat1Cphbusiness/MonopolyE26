@@ -1,5 +1,5 @@
 public class Property extends Field implements IOption {
-    protected Player owner;
+      Player owner;
     private int serieID;
     private boolean isMonopolized;
 

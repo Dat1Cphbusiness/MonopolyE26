@@ -26,4 +26,12 @@ public class Field {
     public String onLand(Player p) {
         return p.getName() + " has landed on field " + this;
     }
+
+    public String getOption() {
+        return option;
+    }
+
+    public int getCost() {
+        return cost;
+    }
 }
