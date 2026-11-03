@@ -23,7 +23,7 @@ public class Prison extends Field implements IOption{
         String msg = super.onLand(p);
         msg+= "\n Du er arrestert, og du skal i fængsel";
 
-        if(p.getWildCard()){
+        if(p.hasWildCard()){
             option = "\n Wille du bruge dit wildcard? (Y/N)";
         } else {
             msg += onReject(p);

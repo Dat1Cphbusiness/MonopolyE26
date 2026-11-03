@@ -25,6 +25,7 @@ public class Property extends Field implements IOption {
         return super.onLand(p);
     }
 
+
     @Override
     public String onAccept(Player p) {
         if (option.equalsIgnoreCase("buy")) {
@@ -41,5 +42,9 @@ public class Property extends Field implements IOption {
     @Override
     public String onReject(Player p) {
         return "";
+    }
+
+    protected Player getOwner() {
+        return owner;
     }
 }

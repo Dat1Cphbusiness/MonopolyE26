@@ -10,6 +10,7 @@ public class Dice {
     Random random = new Random();
 
 
+
     public int rollDiceSum(){
         dice1 = random.nextInt(6)+1;
         dice2 = random.nextInt(6) +1;

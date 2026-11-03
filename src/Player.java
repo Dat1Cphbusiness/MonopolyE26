@@ -62,16 +62,17 @@ public class Player {
         this.position = value;
     }
 
+
     public void imPrison() {
         boolean inPrison = true;
         moveToPosition(31);
     }
 
-    public boolean isHasWildCard() {
+    public boolean hasWildCard() {
         return hasWildCard;
     }
 
-    public void setHasWildCard(boolean value) {
+    public void setWildCard(boolean value) {
         this.hasWildCard = value;
     }
 
