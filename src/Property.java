@@ -6,6 +6,7 @@ public class Property extends Field implements IOption {
     public Property(int ID, String label, int cost, int income, int seriesID) {
         super(ID, label, cost, income);
         this.serieID = seriesID;
+        this.owner = null;
     }
 
     @Override
@@ -37,7 +38,15 @@ public class Property extends Field implements IOption {
 
     @Override
     public String onAccept(Player p) {
-        return "";
+        if (option.equalsIgnoreCase("buy")) {
+            p.buyProperty(this);
+            this.owner = p;
+            //checkForMonopoly();
+            return p.getName() + " has bought this property: " + this.label;
+        } else {
+            return p.getName() + " This message shouldnt apear in program :) ";
+        }
+
     }
 
     @Override
