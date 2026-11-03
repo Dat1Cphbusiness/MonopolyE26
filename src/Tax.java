@@ -13,6 +13,18 @@ public class Tax extends Field implements IOption{
 
     @Override
     public String onReject(Player p) {
-        return "";
+        double amount = p.getTotalWorth(p) * 0.1;
+        p.pay(amount);
+        return p.getName() + " paid " + amount + " in income tax";
     }
+
+    @Override
+    public String onLand(Player p){
+        String s = super.onLand(p) + "\n Du skal betale et beløb der svarer til 10% af dine aktiver. Vil du hellere betale et fast beløb på" + this.cost + "kr= Y/N \n";
+
+
+        return s;
+    }
+    //1
+
 }
