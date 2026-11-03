@@ -1,7 +1,7 @@
 public class Field {
     protected String label;
     private int ID;
-    private int cost;
+    protected int cost;
     private int income;
     private String option;
 
