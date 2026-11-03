@@ -21,7 +21,19 @@ public class Property extends Field implements IOption {
         //else
         //du kan købe denne grund for x penge deed = show.
 
-        return super.onLand(p);
+        String msg = super.onLand(p);
+
+        if (owner == null) {
+            option = "buy";
+            msg+= "Vil du købe? (Y/N):";
+        } else {
+            if (owner != p) {
+                msg += "Du skal betale " + income + " ";
+                //p.pay(this);
+            }
+        }
+
+        return msg;
     }
 
     @Override
