@@ -102,7 +102,7 @@ public class Game {
 
     public void throwAndMove(){
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
-        int result = 2;//dice.rollDiceSum();
+        int result = 3;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -110,20 +110,25 @@ public class Game {
     }
 
     public void landAndAct(Field f){
-    /*    String msg = f.onLand(currentPlayer);
-        System.out.println(msg);//VIL DU KØBE
+        String msg = f.onLand(currentPlayer);
+
 
         boolean response = false;
 
-        if(f.option !=null){//option "BUY""
+        IOption optionField = null;
+        if(f.getOption() !=null){//option "BUY""
+            optionField = (IOption) f;
+            response= ui.promptBinary(msg);
+        }else{
+            ui.displayMessage(msg);
+       }
 
-            response= ui.promptBinary("");
-            if(response){
-                f.onAccept();
-            }else{
-                f.onReject();
-            }
-        }
-*/
-    }
+      if(response){
+          msg = optionField.onAccept(currentPlayer);
+      }else{
+          msg= optionField.onReject(currentPlayer);
+      }
+      ui.displayMessage(msg);
+}
+
 }

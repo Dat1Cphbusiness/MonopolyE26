@@ -40,6 +40,7 @@ class Player{
 + Player(String name, int startAmount)
 + int updatePosition(int value)
 - boolean startPassed()
+- void pay(int amount)
 + boolean buyProperty(Property pf)
 + String toString()
 + String getName()
