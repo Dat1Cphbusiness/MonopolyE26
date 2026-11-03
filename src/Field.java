@@ -20,11 +20,11 @@ public class Field {
 
     @Override
     public String toString() {
-        return "ID: " + ID + "\nLabel: " + label;
+        return label;
     }
 
     public String onLand(Player p) {
-        return p.getName() + " has landed on field " + this;
+        return p.getName() + " er landet på " + this+"\n";
     }
 
     public String getOption() {

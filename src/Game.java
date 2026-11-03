@@ -51,7 +51,7 @@ public class Game {
         while (continueGame){
             currentPlayer = players.get(count % players.size());
             throwAndMove();
-            continueGame = ui.promptBinary("Fortsæt? Y/N");
+            continueGame = ui.promptBinary("\n Fortsæt? Y/N \n");
             count++;
         }
 
@@ -83,14 +83,15 @@ public class Game {
     }
 
     public void displayPlayers() {
+        ui.displayMessage("*****SCORE BOARD****");
         for (Player p : players) {
             System.out.println(p);
         }
+        ui.displayMessage("**********************");
     }
 
     public void endSession() {
         ArrayList<String> playersData = new ArrayList<>();
-        // persister data
 
         for (Player p : players) {
             playersData.add(p.toString());
@@ -101,6 +102,7 @@ public class Game {
     }
 
     public void throwAndMove(){
+        displayPlayers();
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
         int result = 3;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result);
@@ -111,8 +113,6 @@ public class Game {
 
     public void landAndAct(Field f){
         String msg = f.onLand(currentPlayer);
-
-
         boolean response = false;
 
         IOption optionField = null;
