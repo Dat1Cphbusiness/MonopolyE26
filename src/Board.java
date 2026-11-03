@@ -5,8 +5,7 @@ public class Board {
         fields = new Field[fielddata.length];
         createFields(fielddata);
        // Chance.cardDeck = new CardDeck(carddata);
-     //   CardDeck cd = new CardDeck(carddata);
-       // Chance.cardDeck = cd;
+
     }
 
 
