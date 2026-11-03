@@ -15,12 +15,20 @@ public class Player {
         return balance;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public void setBalance(int balance) {
         this.balance = balance;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public int updatePosition(int value) {

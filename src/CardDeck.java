@@ -26,9 +26,10 @@ public class CardDeck {
             String message = values[0];
             int income = Integer.parseInt(values[1].trim());
             int cost = Integer.parseInt(values[2].trim());
-            String event = values[3];
+            String event = values[3].trim();
+            int newPosition = Integer.parseInt(values[4].trim());
 
-            Card c = new Card(message, income, cost, event);
+            Card c = new Card(message, income, cost, event, newPosition);
             cards[i] = c;
         }
     }

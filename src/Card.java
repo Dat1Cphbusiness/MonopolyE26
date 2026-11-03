@@ -3,12 +3,14 @@ public class Card {
     private int income;
     private int cost;
     private String event;
+    private int newPosition;
 
-    public Card(String message, int income, int cost, String event) {
+    public Card(String message, int income, int cost, String event, int newPosition) {
         this.message = message;
         this.income = income;
         this.cost = cost;
         this.event = event;
+        this.newPosition = newPosition;
     }
 
     public int getIncome() {
@@ -25,6 +27,10 @@ public class Card {
 
     public String getEvent() {
         return event;
+    }
+
+    public int getNewPosition() {
+        return newPosition;
     }
 
     @Override
