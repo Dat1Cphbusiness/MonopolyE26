@@ -4,6 +4,8 @@ public class Player {
     private String name;
     private int balance;
     private int position;
+    private boolean hasWildCard;
+    private int lastDiceRoll;
 
     public Player(String name, int startAmount) {
         this.name = name;
@@ -28,6 +30,7 @@ public class Player {
         if (newPosition > LAST_FIELD_POSTION) {
             newPosition = newPosition - LAST_FIELD_POSTION;
             Bank.deposit(4000, this);
+            this.lastDiceRoll = value;
         }
         position = newPosition;
         return position;
@@ -53,5 +56,26 @@ public class Player {
     public boolean buyProperty(Field f) {
         pay(f.getCost());
         return true;
+    }
+
+    public void moveToPosition(int value) {
+        this.position = value;
+    }
+
+    public void imPrison() {
+        boolean inPrison = true;
+        moveToPosition(31);
+    }
+
+    public boolean isHasWildCard() {
+        return hasWildCard;
+    }
+
+    public void setHasWildCard(boolean value) {
+        this.hasWildCard = value;
+    }
+
+    public int getLastDiceRoll() {
+        return lastDiceRoll;
     }
 }
