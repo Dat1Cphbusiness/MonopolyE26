@@ -4,7 +4,7 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
-       // Chance.cardDeck = new CardDeck(carddata);
+        Chance.cardDeck = new CardDeck(carddata);
 
     }
 
@@ -32,16 +32,16 @@ public class Board {
                     f = new Start(ID, label, income);
                     break;
                 case "Plot":
-                    f = new Plot(ID, label, income, cost, seriesID);
+                    f = new Plot(ID, label, cost, income, seriesID);
                     break;
                 case "ShippingLine":
-                    f = new ShippingLine(ID, label, income, cost, seriesID);
+                    f = new ShippingLine(ID, label, cost, income, seriesID);
                     break;
                 case "Tax":
                     f = new Tax(ID,label,cost);
                     break;
                 case "Brewery":
-                    f = new Brewery(ID, label, income, cost, seriesID);
+                    f = new Brewery(ID, label, cost, income,  seriesID);
                     break;
                 case "Parking":
                     f = new Parking(ID, label);
