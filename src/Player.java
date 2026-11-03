@@ -5,6 +5,15 @@ public class Player {
     private int balance;
     private int position;
 
+    public boolean getHasWildcard() {
+        return hasWildcard;
+    }
+
+    public void setHasWildcard(boolean value) {
+        this.hasWildcard = value;
+    }
+
+
     public Player(String name, int startAmount) {
         this.name = name;
         this.balance = startAmount;
@@ -32,6 +41,16 @@ public class Player {
         position = newPosition;
         return position;
     }
+
+    public void moveToPosition(int value) {
+        position = value;
+    }
+
+    public void imprison(Player p) {
+        p.inPrison = true;
+        p.moveToPosition(31);
+    }
+
 
     @Override
     public String toString() {

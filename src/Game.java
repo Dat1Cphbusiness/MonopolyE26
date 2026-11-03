@@ -54,7 +54,7 @@ public class Game {
             continueGame = ui.promptBinary("Fortsæt? Y/N");
             count++;
         }
-
+ 
     }
 
     public void registerPlayers() {
@@ -130,5 +130,6 @@ public class Game {
       }
       ui.displayMessage(msg);
 }
+
 
 }
