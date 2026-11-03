@@ -51,6 +51,6 @@ public class Property extends Field implements IOption {
 
     @Override
     public String onReject(Player p) {
-        return "";
+        return p.getName() + " rejected to buy this property: " + this.label;
     }
 }
