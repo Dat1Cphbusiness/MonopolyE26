@@ -116,19 +116,20 @@ public class Game {
         boolean response = false;
 
         IOption optionField = null;
-        if(f.getOption() !=null){//option "BUY""
+        if(f.getOption() != null){//option "BUY""
             optionField = (IOption) f;
             response= ui.promptBinary(msg);
         }else{
             ui.displayMessage(msg);
-       }
+        }
 
-      if(response){
-          msg = optionField.onAccept(currentPlayer);
-      }else{
-          msg= optionField.onReject(currentPlayer);
-      }
-      ui.displayMessage(msg);
+        if(response){
+            msg = optionField.onAccept(currentPlayer);
+        }else{
+            msg= optionField.onReject(currentPlayer);
+        }
+
+        ui.displayMessage(msg);
 }
 
 }
