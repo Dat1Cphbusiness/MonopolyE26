@@ -110,20 +110,22 @@ public class Game {
     }
 
     public void landAndAct(Field f){
-    /*    String msg = f.onLand(currentPlayer);
-        System.out.println(msg);//VIL DU KØBE
+        String msg = f.onLand(currentPlayer);
+      //VIL DU KØBE
 
         boolean response = false;
 
         if(f.option !=null){//option "BUY""
-
-            response= ui.promptBinary("");
-            if(response){
+            response= ui.promptBinary(msg);
+        }else{
+            ui.displayMessage(msg);
+       }
+         /*   if(response){
                 f.onAccept();
             }else{
                 f.onReject();
             }
-        }
-*/
+        }*/
+
     }
 }
