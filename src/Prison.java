@@ -12,4 +12,10 @@ public class Prison extends Field implements IOption{
     public String onReject(Player p) {
         return "";
     }
+
+    @Override
+    public String onLand(Player p) {
+        return super.onLand(p);
+    }
+
 }
