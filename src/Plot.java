@@ -13,8 +13,12 @@ public class Plot extends Property {
         // Spiller lander på property
         // Er den ejet af en andens spiller, og ejeren ikke er currentPlayer = pay rent
         // er den ikke ejet af en anden spiller = Give option to buy
-        String s = super.onLand(p);
-        s+= " kunne du tænke at købe" +this.label;
-        return s;
+        String msg = super.onLand(p);
+        if (owner == p  /*&& checkForMonopoly() */) {
+            option = "build";
+            msg += "Vil du bygge? (Y/N)";
+        }
+
+        return msg;
     }
 }
