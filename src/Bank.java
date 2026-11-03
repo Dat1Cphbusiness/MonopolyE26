@@ -20,4 +20,16 @@ public class Bank {
         player.setBalance(player.getBalance() - amount);
         return true;
     }
+
+    public static boolean transfer(int amount, Player giver, Player recipient) {
+        if (giver.getBalance() >= amount) {
+            withdraw(amount, giver);
+            deposit(amount, recipient);
+            return true;
+        } else {
+            System.out.println(giver.getName() + " do not have enough money");
+            return false;
+        }
+
+    }
 }

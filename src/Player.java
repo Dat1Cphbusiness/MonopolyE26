@@ -37,4 +37,20 @@ public class Player {
     public String toString() {
         return name + ", " + balance;
     }
+
+    public void receive(int amount) {
+        this.balance += amount;
+    }
+
+    public void pay(int amount) {
+        Bank.withdraw(amount, this);
+    }
+
+    public void pay(int amount, Player recipient){
+        Bank.transfer(amount, this, recipient);
+    }
+
+    public boolean buyProperty(Field f) {
+        pay(f.cost);
+    }
 }
