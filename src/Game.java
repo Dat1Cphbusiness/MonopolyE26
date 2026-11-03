@@ -112,7 +112,6 @@ public class Game {
     public void landAndAct(Field f){
         String msg = f.onLand(currentPlayer);
 
-
         boolean response = false;
 
         IOption optionField = null;
