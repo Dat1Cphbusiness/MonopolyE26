@@ -136,12 +136,10 @@ public class Game {
                 msg= optionField.onReject(currentPlayer);
             }
 
-        }else{
-            ui.displayMessage(msg);
-       }
+        }
+        ui.displayMessage(msg);
 
 
-      ui.displayMessage(msg);
     }
 
     public void doubleDiceCounter() {
