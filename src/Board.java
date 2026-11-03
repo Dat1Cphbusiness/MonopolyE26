@@ -4,7 +4,7 @@ public class Board {
     public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
-       // Chance.cardDeck = new CardDeck(carddata);
+        //Chance.cardDeck = new CardDeck(carddata); //TODO: Har ikke kunne gennemskue en løsning på dette
 
     }
 
@@ -13,7 +13,7 @@ public class Board {
 
     private void createFields(String[] data) {
         for (int i = 0; i < data.length; i++) {
-            String[] values = data[i].split(","); //TODO: tidligere metode har fjernet ALLE mellemrum (Fjernet: .replaceAll("\\s+", ""))
+            String[] values = data[i].split(","); //TODO: fjernet tidligere metode der fjernede ALLE mellemrum (Fjernet: .replaceAll("\\s+", ""))
 
             int ID = Integer.parseInt(values[0].trim()); //Grund ID //TODO: tilføjet: .trim() til argument
             String type = values[1].trim(); //Type af felt //TODO: tilføjet: .trim() til argument

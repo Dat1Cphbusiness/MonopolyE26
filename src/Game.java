@@ -44,8 +44,8 @@ public class Game {
            String[] carddata = io.readData("data/carddata.csv", 100);
            board = new Board(fielddata, carddata);
 
-           //Field f = board.getField(40);
-           //System.out.println(f);//Beskrivelse af rådhuspladsen*/
+           //Field f = board.getField(40); //TODO: Udkommenteret
+           //System.out.println(f);//Beskrivelse af rådhuspladsen*/ //TODO: udkommenteret
 
     }
 

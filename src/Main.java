@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Game g = new Game("Yatzy",4);
+        Game g = new Game("Matador",4); //TODO: "name" er rettet fra "yatzy" til "matador"
         g.startSession();
         //g.registerPlayers();
         g.displayPlayers();
