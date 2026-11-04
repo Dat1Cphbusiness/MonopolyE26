@@ -5,6 +5,11 @@ public class Field {
     protected int income;
     protected String option;
 
+    public Field(int ID, String label) {
+        this.ID = ID;
+        this.label = label;
+    }
+
     public Field(int ID, String label, int cost, int income) {
         this.ID = ID;
         this.label = label;
@@ -12,10 +17,7 @@ public class Field {
         this.income = income;
     }
 
-    public Field(int ID, String label) {
-        this.ID = ID;
-        this.label = label;
-    }
+
 
 
     @Override

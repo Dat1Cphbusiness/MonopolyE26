@@ -77,7 +77,7 @@ public class Game {
     }
 
 
-    private void createPlayer(String name, int score) {
+    public void createPlayer(String name, int score) {
         Player p = new Player(name, score);
         players.add(p);
     }
@@ -144,6 +144,14 @@ public class Game {
 
     public void doubleDiceCounter() {
         dice.getDoubleDiceCounter();
+    }
+
+    public Board getBoard() {
+        return this.board;
+    }
+
+    public List<Player> getPlayers() {
+        return this.players;
     }
 
 }

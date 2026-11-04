@@ -33,5 +33,9 @@ public class CardDeck {
         }
     }
 
+    public void resetCounter() {
+        this.counter = 0;
+    }
+
 
 }
