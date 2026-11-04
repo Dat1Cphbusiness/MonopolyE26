@@ -1,9 +1,9 @@
 public class Field {
-    private String label;
+    protected String label;
     private int ID;
-    private int cost;
-    private int income;
-    private String option;
+    protected int cost;
+    protected int income;
+    protected String option;
 
     public Field(int ID, String label, int cost, int income) {
         this.ID = ID;
@@ -12,12 +12,26 @@ public class Field {
         this.income = income;
     }
 
+    public Field(int ID, String label) {
+        this.ID = ID;
+        this.label = label;
+    }
+
+
     @Override
     public String toString() {
-        return "ID: " + ID + "\nLabel: " + label;
+        return label;
     }
 
     public String onLand(Player p) {
-        return p.getName() + " has landed on field " + this;
+        return p.getName() + " er landet på " + this+"\n";
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public int getCost() {
+        return cost;
     }
 }

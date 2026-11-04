@@ -11,6 +11,9 @@ public class Game {
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
     private Player currentPlayer;
+    private Board board;
+    private Dice dice = new Dice();
+    private int count = 0;
 
     public Game(String name, int maxPlayers) {
         this.name = name;
@@ -27,8 +30,7 @@ public class Game {
                 String[] values = s.split(",");// "tess, 0". --> ["tess", "0"]
                 String name = values[0];
                 int balance = Integer.parseInt(values[1].trim());
-                Player p = new Player(name, balance);
-                players.add(p);
+               createPlayer(name, balance);
             }
 
         }else {
@@ -36,26 +38,20 @@ public class Game {
         }
         createAssets();
     }
+
     public void createAssets(){
            String[] fielddata = io.readData("data/fielddata.csv", 40);
            String[] carddata = io.readData("data/carddata.csv", 100);
-           Board board = new Board(fielddata, carddata);
-
-
-
-           Field f = board.getField(40);
-             System.out.println(f);//Beskrivelse af rådhuspladsen*/
-           f.onLand(currentPlayer);
+           board = new Board(fielddata, carddata);
     }
 
     public void runGameLoop(){
-        int count = 0;
         boolean continueGame = true;
 
         while (continueGame){
             currentPlayer = players.get(count % players.size());
             throwAndMove();
-            continueGame = ui.promptBinary("Fortsæt? Y/N");
+            continueGame = ui.promptBinary("\n Fortsæt? Y/N \n");
             count++;
         }
 
@@ -74,7 +70,7 @@ public class Game {
         while (this.players.size() < totalPlayers) {
 
             String playerName = ui.promptText("Tast spiller navn");
-            this.createPlayer(playerName, 0);
+            this.createPlayer(playerName, 30000);
         }
 
         Collections.shuffle(players);
@@ -87,14 +83,15 @@ public class Game {
     }
 
     public void displayPlayers() {
+        ui.displayMessage("*****SCORE BOARD****");
         for (Player p : players) {
             System.out.println(p);
         }
+        ui.displayMessage("**********************");
     }
 
     public void endSession() {
         ArrayList<String> playersData = new ArrayList<>();
-        // persister data
 
         for (Player p : players) {
             playersData.add(p.toString());
@@ -105,10 +102,48 @@ public class Game {
     }
 
     public void throwAndMove(){
+        displayPlayers();
         ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+        int result = 30;//dice.rollDiceSum();
+        ui.displayMessage(currentPlayer.getName()+" slog "+result);
+        int newPosition = currentPlayer.updatePosition(result);
+        Field f = board.getField(newPosition);
+        this.landAndAct(f);
+        if (dice.getIsDouble()) {
+            dice.setDoubleDiceCounter(dice.getDoubleDiceCounter() + 1);
+            if (dice.getDoubleDiceCounter() <= 4) {
+                ui.displayMessage("Du får en ekstra tur!");
+                count--;
+            } else {
+                ui.displayMessage("Du har slået for mange dobbeltslag. Du er blevet sat i fængsel");
+                dice.resetDoubleDiceCounter();
+                f = board.getField(31);
+            }
+        }
     }
 
-    public void landAndAct(){
+    public void landAndAct(Field f){
+        String msg = f.onLand(currentPlayer);
+        boolean response = false;
+
+        IOption optionField = null;
+        if(f.getOption() !=null){//option "BUY""
+            optionField = (IOption) f;
+            response= ui.promptBinary(msg);
+            if(response){
+                msg = optionField.onAccept(currentPlayer);
+            }else{
+                msg= optionField.onReject(currentPlayer);
+            }
+
+        }
+        ui.displayMessage(msg);
+
 
     }
+
+    public void doubleDiceCounter() {
+        dice.getDoubleDiceCounter();
+    }
+
 }
